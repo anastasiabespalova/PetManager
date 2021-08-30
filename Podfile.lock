@@ -1,0 +1,16 @@
+PODS:
+  - HighlightedTextEditor (2.0.2)
+
+DEPENDENCIES:
+  - HighlightedTextEditor
+
+SPEC REPOS:
+  trunk:
+    - HighlightedTextEditor
+
+SPEC CHECKSUMS:
+  HighlightedTextEditor: c71301c0352cd772e8e9528edb5c6329d0d89590
+
+PODFILE CHECKSUM: 52cbde8a939ad214a16d787482c8f4f9b5dc6b83
+
+COCOAPODS: 1.10.2

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Pet" representedClassName="Pet" syncable="YES" codeGenerationType="class">
+        <attribute name="active_activities_" optional="YES" attributeType="String"/>
+        <attribute name="archived_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="archived_activities_" optional="YES" attributeType="String"/>
+        <attribute name="chip_id_" optional="YES" attributeType="String"/>
+        <attribute name="date_birth_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="gender_" optional="YES" attributeType="String"/>
+        <attribute name="id_" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="inactive_activities_" optional="YES" attributeType="String"/>
+        <attribute name="name_" optional="YES" attributeType="String"/>
+        <attribute name="neutered_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="timestamp_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Weight__" representedClassName="Weight__" syncable="YES" codeGenerationType="class">
+        <attribute name="archived_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="measure_" optional="YES" attributeType="String"/>
+        <attribute name="timestamp_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="value_" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="Pet" positionX="-48.2423095703125" positionY="-168.5458068847656" width="128" height="208"/>
+        <element name="Weight__" positionX="127.6511840820312" positionY="-172.1785583496094" width="128" height="103"/>
+    </elements>
+</model>

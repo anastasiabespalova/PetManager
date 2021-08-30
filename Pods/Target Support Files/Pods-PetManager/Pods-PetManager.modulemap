@@ -1,0 +1,6 @@
+framework module Pods_PetManager {
+  umbrella header "Pods-PetManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

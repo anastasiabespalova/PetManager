@@ -1,0 +1,6 @@
+framework module HighlightedTextEditor {
+  umbrella header "HighlightedTextEditor-umbrella.h"
+
+  export *
+  module * { export * }
+}
