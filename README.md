@@ -7,7 +7,7 @@ Application for tracking pet needs.
 - Add / remove / archive pet needs
 - Ability to add a short or detailed record of the need
 - Add photos and videos to the detailed record of the need
-- Adding a walk
+- Adding a walk track for one and several pets
 - View records of animal needs
 
 ## Used frameworks
@@ -25,14 +25,9 @@ Application for tracking pet needs.
 ## Screenshots
 
 <p float="left">
-    <img src="https://github.com/anastasiabespalova/PetManager/blob/master/Screenshots/IMG_0463.PNG" width=250>
     <img src="https://github.com/anastasiabespalova/PetManager/blob/master/Screenshots/IMG_0464.PNG" width=250>
     <img src="https://github.com/anastasiabespalova/PetManager/blob/master/Screenshots/IMG_0465.PNG" width=250>
-</p>
-
-<p float="left">
-    <img src="https://github.com/anastasiabespalova/PetManager/blob/master/Screenshots/IMG_0466.PNG" width=250>
-    <img src="https://github.com/anastasiabespalova/PetManager/blob/master/Screenshots/IMG_0467.PNG" width=250>
+        <img src="https://github.com/anastasiabespalova/PetManager/blob/master/Screenshots/IMG_0467.PNG" width=250>
 </p>
 
 
