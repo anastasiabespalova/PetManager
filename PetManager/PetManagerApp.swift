@@ -25,7 +25,7 @@ struct PetManagerApp: App {
             
             ContentView()
                 .onAppear() {
-                    let userDefaults = UserDefaults.standard
+                     let userDefaults = UserDefaults.standard
                     if !userDefaults.valueExists(forKey: "MaxID") {
                         UserDefaults.standard.set(1, forKey: "Key")
                     }

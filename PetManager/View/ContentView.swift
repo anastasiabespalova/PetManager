@@ -28,9 +28,9 @@ struct ContentView: View {
   //  @State private var timeCycling = 0.0
    // @ObservedObject var petViewModel = PetViewModel()
     var body: some View {
+    
         
         TabView(selection: $selection) {
-            //Text("puk")
             SyncView(selection: $selection, tag: 0) {
             MainPageCircle()
             }
@@ -39,7 +39,7 @@ struct ContentView: View {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
-                .tag(0)
+                .tag(0) 
             SyncView(selection: $selection, tag: 1) {
            PetList()
             }
@@ -50,7 +50,6 @@ struct ContentView: View {
                     Text("List")
                 }
                 .tag(1)
-            //Text("puk")
             WalkView(/*cyclingStartTime: $cyclingStartTime, timeCycling: $timeCycling*/)
                // .environmentObject(petViewModel)
                 .tabItem {
@@ -58,7 +57,6 @@ struct ContentView: View {
                     Text("Walk")
                 }
                 .tag(2)
-           // Text("puk")
             PersonView()
                // .environmentObject(petViewModel)
                 .tabItem {

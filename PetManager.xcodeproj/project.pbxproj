@@ -20,8 +20,6 @@
 		333CA19026D65B890069F4EB /* WalkInfoMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA18F26D65B890069F4EB /* WalkInfoMenu.swift */; };
 		333CA19226D667600069F4EB /* WalkMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA19126D667600069F4EB /* WalkMap.swift */; };
 		333CA19826D672E60069F4EB /* SelectPetForAWalkPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA19726D672E60069F4EB /* SelectPetForAWalkPopup.swift */; };
-		333CA19D26D6889D0069F4EB /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 333CA19C26D6889D0069F4EB /* ConfettiSwiftUI */; };
-		333CA19E26D6889D0069F4EB /* ConfettiSwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 333CA19C26D6889D0069F4EB /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		333CA1A126D688B30069F4EB /* WalkPopups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA1A026D688B30069F4EB /* WalkPopups.swift */; };
 		333CA1A326D6903D0069F4EB /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA1A226D6903D0069F4EB /* RatingView.swift */; };
 		333CA1A526D78F510069F4EB /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA1A426D78F500069F4EB /* PersonView.swift */; };
@@ -91,7 +89,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				333CA19E26D6889D0069F4EB /* ConfettiSwiftUI in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,7 +181,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				333CA19D26D6889D0069F4EB /* ConfettiSwiftUI in Frameworks */,
 				69DE886C5B2FAAD7BDA5EA8E /* Pods_PetManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,7 +436,6 @@
 			);
 			name = PetManager;
 			packageProductDependencies = (
-				333CA19C26D6889D0069F4EB /* ConfettiSwiftUI */,
 			);
 			productName = PetManager;
 			productReference = 3366E42E26D12BA4000DF905 /* PetManager.app */;
@@ -813,14 +808,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		333CA19C26D6889D0069F4EB /* ConfettiSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 333CA19B26D6889D0069F4EB /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
-			productName = ConfettiSwiftUI;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3366E43C26D12BAD000DF905 /* PetManager.xcdatamodeld */ = {

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ConfettiSwiftUI
 
 struct DetailedWalkPopup: View {
     

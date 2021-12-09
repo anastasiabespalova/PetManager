@@ -10,6 +10,7 @@ import Foundation
 
 import Foundation
 import CoreData
+import CoreLocation
 
 class CoreDataManager {
     

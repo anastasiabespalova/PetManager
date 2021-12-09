@@ -8,6 +8,8 @@
 import CoreData
 import Combine
 import SwiftUI
+import MapKit
+import CoreLocation
 
 extension ActivityEntry_: Comparable {
     static public func < (lhs: ActivityEntry_, rhs: ActivityEntry_) -> Bool {
