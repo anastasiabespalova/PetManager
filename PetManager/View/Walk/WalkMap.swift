@@ -5,99 +5,136 @@
 //  Created by Анастасия Беспалова on 25.08.2021.
 //
 
+class CyclingStatus: ObservableObject {
+    @Published var isCycling = false
+    
+    func startedCycling() {
+        isCycling = true
+    }
+    
+    func stoppedCycling() {
+        isCycling = false
+    }
+}
+ 
+var startedCycling = false
+
 import SwiftUI
 import MapKit
+import CoreLocation
 
-/*struct WalkMap: View {
+struct MapView: UIViewRepresentable {
+    typealias UIViewType = MKMapView
     
-    @State var manager = CLLocationManager()
-    @State var alert = false
+    let persistenceController = CoreDataManager.shared
+
+    @EnvironmentObject var petWalkViewModel: PetWalkViewModel
+    @EnvironmentObject var cyclingStatus: CyclingStatus
+   // @State var cyclingStatus: CyclingStatus
+    @StateObject var locationManager: LocationViewModel
+    //@State var walkStarted: Bool
+    @Binding var centerMapOnLocation: Bool
+   // @Binding var cyclingStartTime: Date
+   // @Binding var timeCycling: TimeInterval
     
-    var body: some View {
-       
-        MapView(manager: $manager, alert: $alert).alert(isPresented: $alert) {
-            
-            Alert(title: Text("Please Enable Location Access In Settings Pannel !!!"))
-        }
+    var userLatitude: String {
+        return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        
+    var userLongitude: String {
+        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
     }
-}
-
-struct MapView : UIViewRepresentable {
-    
-    @Binding var manager : CLLocationManager
-    @Binding var alert : Bool
-    let map = MKMapView()
     
     func makeCoordinator() -> MapView.Coordinator {
-        return Coordinator(parent1: self)
+        Coordinator(self, colour: .purple)
     }
-    
-    func makeUIView(context: UIViewRepresentableContext<MapView>) -> MKMapView {
-        
-        
-        let center = CLLocationCoordinate2D(latitude: 13.086, longitude: 80.2707)
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
-        map.region = region
-        manager.requestWhenInUseAuthorization()
-        manager.delegate = context.coordinator
-        manager.startUpdatingLocation()
-        return map
-    }
-    func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
-        
-    }
-    
-    class Coordinator : NSObject,CLLocationManagerDelegate{
-        
-        var parent : MapView
-        
-        init(parent1 : MapView) {
-            
-            parent = parent1
+
+    final class Coordinator: NSObject, MKMapViewDelegate {
+        var control: MapView
+        var colour: UIColor
+
+        init(_ control: MapView, colour: UIColor) {
+            self.control = control
+            self.colour = colour
         }
-        
-        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-            
-            if status == .denied{
-                
-                parent.alert.toggle()
+
+        //Managing the Display of Overlays
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            if let polyline = overlay as? MKPolyline {
+                let polylineRenderer = MKPolylineRenderer(overlay: polyline)
+                polylineRenderer.strokeColor = colour
+                polylineRenderer.lineWidth = 8
+                return polylineRenderer
             }
+            return MKOverlayRenderer(overlay: overlay)
         }
+    }
+
+    func makeUIView(context: Context) -> MKMapView {
+        MKMapView(frame: .zero)
+    }
+    
+    func updateUIView(_ view: MKMapView, context: Context) {
+        view.showsUserLocation = true
         
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let authStatus = locationManager.statusString
+        
+        if (authStatus == "authorizedAlways" || authStatus == "authorizedWhenInUse") {
+            let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(userLatitude)!, CLLocationDegrees(userLongitude)!)
+            let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
+            let region = MKCoordinateRegion(center: location, span: span)
+            if (centerMapOnLocation) {
+                view.setRegion(region, animated: true)
+            }
             
-            let location = locations.last
-            let point = MKPointAnnotation()
-            
-            let georeader = CLGeocoder()
-            georeader.reverseGeocodeLocation(location!) { (places, err) in
-                
-                if err != nil{
-                    
-                    print((err?.localizedDescription)!)
-                    return
+            // Need to maintain the cyclists route if they are currently cycling
+            if cyclingStatus.isCycling {
+                if (!startedCycling) {
+                    startedCycling = true
+                    locationManager.startedCycling()
                 }
-                
-                let place = places?.first?.locality
-                point.title = place
-                point.subtitle = "Current"
-                point.coordinate = location!.coordinate
-                self.parent.map.removeAnnotations(self.parent.map.annotations)
-                self.parent.map.addAnnotation(point)
-                
-                let region = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-                self.parent.map.region = region
+                let locationsCount = locationManager.cyclingLocations.count
+                switch locationsCount {
+                case _ where locationsCount < 2:
+                    break
+                default:
+                    var locationsToRoute : [CLLocationCoordinate2D] = []
+                    for location in locationManager.cyclingLocations {
+                        if (location != nil) {
+                            locationsToRoute.append(location!.coordinate)
+                        }
+                    }
+                    if (locationsToRoute.count > 1 && locationsToRoute.count <= locationManager.cyclingLocations.count) {
+                        let route = MKPolyline(coordinates: locationsToRoute, count: locationsCount)
+                        view.addOverlay(route)
+                        
+                    }
+                }
             }
+            else {
+               // print("i'm there")
+                // Means we need to store the current route and clear the map
+                if (startedCycling) {
+                //if (walkStarted) {
+                    //print("i'm here")
+                    startedCycling = false
+                    let overlays = view.overlays
+                    view.removeOverlays(overlays)
+                   // persistenceController.storeBikeRide(locations: locationManager.cyclingLocations,
+                                                      //  speeds: locationManager.cyclingSpeeds,
+                                                      //  distance: locationManager.cyclingTotalDistance,
+                                                       // elevations: locationManager.cyclingAltitudes,
+                                                      //  startTime: cyclingStartTime,
+                                                       // time: timeCycling, id: locationManager.id)
+                    
+                  //  locationManager.clearLocationArray()
+                  //  locationManager.stopTrackingBackgroundLocation()
+                }
+            }
+            view.delegate = context.coordinator
         }
     }
 }
-*/
 
 struct WalkMap: View {
     

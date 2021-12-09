@@ -13,12 +13,12 @@ struct SelectPetForAWalkPopup: View {
     
     @State var selections: [Int] = []
     
-    @EnvironmentObject var petViewModel: PetViewModel
+    @EnvironmentObject var petWalkViewModel: PetWalkViewModel
     
     
-    @Binding var walkStarted: Bool
-    @Binding var moreThenOnePet: Bool
-    @Binding var showingPopupForPetWalkSelection: Bool
+    //@Binding var walkStarted: Bool
+   // @Binding var moreThenOnePet: Bool
+   // @Binding var showingPopupForPetWalkSelection: Bool
     @State var text: String = ""
     
     var body: some View {
@@ -27,7 +27,7 @@ struct SelectPetForAWalkPopup: View {
             ZStack {
                 
                 Button(action: {
-                    self.showingPopupForPetWalkSelection = false
+                    petWalkViewModel.showingPopupForPetWalkSelection = false
                     selections.removeAll()
                 }) {
                     Image(systemName: "xmark")
@@ -53,7 +53,7 @@ struct SelectPetForAWalkPopup: View {
                 .frame(width: 250)
             
             List {
-                ForEach(petViewModel.pets, id: \.id) { item in
+                ForEach(petWalkViewModel.pets, id: \.id) { item in
                     MultipleSelectionRow(title: item.name, isSelected: self.selections.contains(item.id), image: item.defaultImage) {
                         if self.selections.contains(item.id) {
                             self.selections.removeAll(where: { $0 == item.id })
@@ -67,20 +67,20 @@ struct SelectPetForAWalkPopup: View {
             .frame(width: 200, height: 80)
             
             Button(action: {
-                self.showingPopupForPetWalkSelection = false
+                petWalkViewModel.showingPopupForPetWalkSelection = false
                 for item in selections {
-                    for pet in petViewModel.pets {
+                    for pet in petWalkViewModel.pets {
                         if pet.id == item {
-                            petViewModel.petsOnWalk.append(pet)
+                            petWalkViewModel.petsOnWalk.append(pet)
                             print("appended")
                         }
                     }
                 }
-                if petViewModel.petsOnWalk.count > 1 {
-                    walkStarted = true
-                    moreThenOnePet = true
-                } else if petViewModel.petsOnWalk.count == 1 {
-                    walkStarted = true
+                if petWalkViewModel.petsOnWalk.count > 1 {
+                    petWalkViewModel.walkStarted = true
+                    petWalkViewModel.moreThenOnePet = true
+                } else if petWalkViewModel.petsOnWalk.count == 1 {
+                    petWalkViewModel.walkStarted = true
                 }
                 selections.removeAll()
             }) {

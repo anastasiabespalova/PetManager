@@ -9,12 +9,9 @@ import SwiftUI
 
 
 struct PersonView: View {
-    init() {
-    }
- 
+    @ObservedObject var petViewModel = PetViewModel()
+   // @EnvironmentObject var petViewModel: PetViewModel
     var body: some View {
-        
-        
            NavigationView {
                List {
                 
@@ -35,32 +32,25 @@ struct PersonView: View {
                     }
                     
                     Section(header: Text("Pet management")) {
-                        NavigationLink(destination: ArchiveView()) {
+                        NavigationLink(destination: ArchiveView()
+                                        .environmentObject(petViewModel)) {
                             Label("Archive", systemImage: "archivebox")
                                 .accentColor(.orange)
                         }
-                        NavigationLink(destination: EditPetInfoView()) {
+                        NavigationLink(destination: EditPetInfoView(petViewModel: petViewModel)
+                                        .onAppear() {
+                                            petViewModel.updateActivePets()
+                                        }
+                                        /*.environmentObject(petViewModel)*/) {
                             Label("Edit pet and activities", systemImage: "pencil")
                                 .accentColor(.blue)
                         }
-                      /*  NavigationLink(destination: EditPetActivitiesView()) {
-                            Label("Edit pet activities", systemImage: "scribble.variable")
-                                .accentColor(.green)
-                        } */
                         NavigationLink(destination: NotificationsView()) {
                             Label("Notifications", systemImage: "bell.badge")
                                 .accentColor(.red)
                         }
                     }
-                    
-                  /*  Section(header: Text("Settings")) {
-                        Label("Preferred weight unit", systemImage: "plusminus")
-                            .accentColor(.purple)
-                        Label("Preferred distance unit", systemImage: "clock")
-                            .accentColor(.red)
-                        Label("Pills settings", systemImage: "pills")
-                            .accentColor(.blue)
-                    }*/
+
                  
                 Section(header: Text("Other")) {
                     Label("App usage", systemImage: "questionmark.circle")

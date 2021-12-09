@@ -10,35 +10,45 @@ import CoreData
 
 
 struct MainPageCircle: View {
-    @ObservedObject var petViewModel = PetViewModel()
+     @StateObject var petViewModel = PetViewModel()
+     @State private var currentTab = 0
+   // @EnvironmentObject var petViewModel: PetViewModel
     @State private var selectedTab = 0
     
     var body: some View {
-        ScrollView {
-            
-            ZStack {
-
+       // VStack {
+           // ZStack {
                 TabView(selection: $selectedTab.animation()) {
-                    ForEach(0..<petViewModel.pets.count) { index in
-                        CircleNavigation(pet: $petViewModel.pets[index])
-                            .offset(y: -20)
+                    ForEach(petViewModel.pets, id: \.self.id) { pet in
+                        CircleNavigation(pet: pet, petViewModel: petViewModel)
+                                .onAppear() {
+                                    petViewModel.updateActivePets()
+                                }
+                                //.environmentObject(petViewModel)
                     }
                 }
-                
+                .onAppear() {
+                    petViewModel.updateActivePets()
+                }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-
-                .frame(
+                .id(petViewModel.pets.count)
+               /* .frame(
                     width: UIScreen.main.bounds.width ,
-                    height: UIScreen.main.bounds.height - 83
-                )
+                   // height: UIScreen.main.bounds.height - 83
+                )*/
                 
-            }
+           // }
+            
+           /* }.onAppear() {
+                petViewModel.updateActivePets()
+            }*/
+            //.frame()
 
-        }
-        .modifier(DismissingKeyboard())
-        .edgesIgnoringSafeArea(.all)
         
+        .modifier(DismissingKeyboard())
+      //  .edgesIgnoringSafeArea(.all)
+        //.offset(y: -20)
        
     }
     

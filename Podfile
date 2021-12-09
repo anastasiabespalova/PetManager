@@ -7,5 +7,5 @@ target 'PetManager' do
 
   # Pods for PetManager
     pod 'HighlightedTextEditor'
-
+    pod 'Introspect'
 end

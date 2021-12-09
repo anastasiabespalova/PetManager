@@ -24,7 +24,7 @@ struct PetJournalView: View {
     
    // @State var push = false
     
-    
+    @State var activityEntryInfo_ = ActivityEntryInfo_()
     @State var showPets = true
     @State var showActivities = false
     @State var showActivityHistory = false
@@ -63,11 +63,11 @@ struct PetJournalView: View {
             //Show list with activity history
                    if showActivityHistory {
                         PetActivityHistoryView(
-                            selectedActivity: $selectedActivity, showActivities: $showActivities,
+                            activityEntryInfo_: $activityEntryInfo_, selectedActivity: $selectedActivity, showActivities: $showActivities,
                             showActivityHistory: $showActivityHistory,
                             showActivityHistoryEntry: $showActivityHistoryEntry,
                             activityEntryIndex: $activityEntryIndex,
-                            forward: $forward)
+                            forward: $forward, petId: petViewModel.pets[petIndex].id)
                             .environmentObject(ActivityHistoryViewModel(pet: petViewModel.pets[petIndex],
                                                                         activity: selectedActivity))
                             .zIndex(2)
@@ -76,19 +76,23 @@ struct PetJournalView: View {
                 //Show detailed activity entry
                 if showActivityHistoryEntry {
                     PetActivityEntryView(
+                        activityEntryInfo_: $activityEntryInfo_,
                         showActivityHistory: $showActivityHistory,
                         showActivityHistoryEntry: $showActivityHistoryEntry,
                         activityEntryIndex: $activityEntryIndex,
                         forward: $forward
                         )
-                        .environmentObject(ActivityHistoryViewModel(pet: petViewModel.pets[petIndex],
-                                                                    activity: selectedActivity))
+                        .environmentObject(ActivityHistoryViewModel(pet: petViewModel.pets[petIndex], activity: selectedActivity))
                         .zIndex(3)
+                    .onDisappear() {
+                        petViewModel.addActivityEntry(activityEntry: activityEntryInfo_)
+                    }
                 }
+                
                   
               }
               //.transition(.slide)
-              .animation(.spring())
+              .animation(.spring(blendDuration: 0.5))
           }
         
 }
@@ -122,7 +126,10 @@ struct Home: View {
                     VStack(alignment: .leading, spacing: 0){
                         
                         ForEach(petViewModel.pets.indices, id: \.self) {index in
-                            PetItem(showArchivePopupForPet: $showArchivePopupForPet, showDeletionPopupForPet: $showDeletionPopupForPet, index: index, forward: $forward, showActivities: $showActivities, showPets: $showPets, petIndex: $petIndex)
+                            if index < petViewModel.pets.count {
+                                PetItem(showArchivePopupForPet: $showArchivePopupForPet, showDeletionPopupForPet: $showDeletionPopupForPet, index: index, forward: $forward, showActivities: $showActivities, showPets: $showPets, petIndex: $petIndex)
+                            }
+                            
                         }
                         
                     }
@@ -132,13 +139,15 @@ struct Home: View {
             }
           //  .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)))
             .popup(isPresented: $showDeletionPopupForPet, type: .`default`, closeOnTap: false) {
-                
-                DeletePopup(deletedObject: petIndex >= 0 ? "\(petViewModel.pets[petIndex].name)" : "", showingPopup: $showDeletionPopupForPet)
+                DeletePopup(deletedObject: petIndex >= 0 && petIndex < petViewModel.pets.count  ? "\(petViewModel.pets[petIndex].name)" : "", showingPopup: $showDeletionPopupForPet, object: "Pet")
+                        .environmentObject(petViewModel)
+               
                 
             }
         
             .popup(isPresented: $showArchivePopupForPet, autohideIn: 1) {
                 ArchivePopup()
+                    .environmentObject(petViewModel)
             }
         
             .popup(isPresented: $showAddNewPet, type: .`default`, closeOnTap: false) {
@@ -208,6 +217,12 @@ struct PetItem: View {
                     Spacer()
                     Button(action: {
                         showArchivePopupForPet = true
+                        petViewModel.archivingIndex = index
+                        
+                        if petViewModel.archivingIndex >= 0 {
+                            petViewModel.archivePetWithId(id: petViewModel.pets[petViewModel.archivingIndex].id)
+                            petViewModel.archivingIndex = -1
+                        }
                     }) {
                         Image(systemName: "archivebox")
                             .font(.title)
@@ -218,6 +233,8 @@ struct PetItem: View {
                     
                     Button(action: {
                         showDeletionPopupForPet = true
+                        petViewModel.deletingIndex = index
+                       // petIndex = index
                     }) {
                         Image(systemName: "trash")
                             .font(.title)
@@ -227,7 +244,7 @@ struct PetItem: View {
                     }
                 }
                 
-                
+                if index < petViewModel.pets.count {
                 PetCardView(pet: petViewModel.pets[index])
                     // drag gesture...
                     .offset(x: petViewModel.pets[index].offset)
@@ -239,6 +256,7 @@ struct PetItem: View {
                                 .onEnded({ (value) in onEnd(value: value, index: index )
                                     
                                 }))
+                }
             }
             
             .onTapGesture {
@@ -283,21 +301,50 @@ struct PetCardView: View {
     
     var body: some View {
         HStack{
-            Image(pet.defaultImage)
+           /* Image(pet.defaultImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: UIScreen.main.bounds.width / 3.2, height: 100)
+                .frame(width: UIScreen.main.bounds.width / 3.2, height: 100)*/
+            
+            Image(uiImage: pet.photo!)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 70, height: 70)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 10)
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(pet.name)
                     .fontWeight(.heavy)
                     .foregroundColor(.black)
-                Text("Here you can place description of a pet")
+                
+                HStack {
+                    Text("Gender: \(pet.gender)")
+                    Spacer()
+                    if pet.neutred == true {
+                        Text("Neutred")
+                    } else {
+                        Text("Not neutred")
+                    }
+                }
+                .font(.caption)
+                .foregroundColor(.gray)
+                
+                HStack {
+                    Text("Birthday: ")
+                    Text(pet.date_birth, style: .date)
+                }
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text("Some text")
-                    .fontWeight(.heavy)
-                    .foregroundColor(.black)
+                
+                if pet.chip_id != "" {
+                    Text("Chip id: \(pet.chip_id)")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+                
+                
             }
             Spacer(minLength: 0)
         }

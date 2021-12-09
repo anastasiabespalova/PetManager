@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct WalkStartInfoMenu: View {
-    @Binding var walkStarted: Bool
-    @Binding var showingPopupForPetWalkSelection: Bool
-    
-    @EnvironmentObject var petViewModel: PetViewModel
+    @EnvironmentObject var petWalkViewModel: PetWalkViewModel
     
     var body: some View {
         HStack {
@@ -24,11 +21,12 @@ struct WalkStartInfoMenu: View {
                     .frame(width: 60, height: 60)
             }
             .onTapGesture {
-                if petViewModel.pets.count > 1 {
-                    showingPopupForPetWalkSelection = true
+                if petWalkViewModel.pets.count > 1 {
+                    petWalkViewModel.showingPopupForPetWalkSelection = true
                 } else {
-                    if petViewModel.pets.count == 1 {
-                        petViewModel.petsOnWalk.append(petViewModel.pets.first!)
+                    if petWalkViewModel.pets.count == 1 {
+                        petWalkViewModel.petsOnWalk.append(petWalkViewModel.pets.first!)
+                        petWalkViewModel.walkStarted = true
                     }
                 }
             }
@@ -38,13 +36,17 @@ struct WalkStartInfoMenu: View {
 }
 
 struct WalkProcessInfoMenu: View {
-    @EnvironmentObject var petViewModel: PetViewModel
-    @Binding var walkStarted: Bool
-    @Binding var showWalkEndedPopup: Bool
+    let persistenceController = CoreDataManager.shared
     
-    @State var meters: Int = 0
-    @State var seconds: Int = 0
-    @State var minutes: Int = 0
+    @EnvironmentObject var petWalkViewModel: PetWalkViewModel
+    @StateObject var locationManager: LocationViewModel
+    
+    //@Binding var cyclingStartTime: Date
+    //@Binding var timeCycling: TimeInterval
+    
+    @StateObject var cyclingStatus: CyclingStatus
+    @StateObject var timer: TimerViewModel
+    
     var body: some View {
         HStack {
             ZStack {
@@ -52,7 +54,7 @@ struct WalkProcessInfoMenu: View {
                     .fill(Color.white)
                     .frame(width: 100, height: 50)
                     .opacity(0.6)
-                Text("\(meters) m")
+                Text("\(Int(locationManager.cyclingTotalDistance)) m")
                     
             }
             
@@ -65,18 +67,40 @@ struct WalkProcessInfoMenu: View {
                     .frame(width: 50, height: 50)
             }
             .onTapGesture {
-                walkStarted = false
-                showWalkEndedPopup = true
+                petWalkViewModel.stopWalk()
+                
+                petWalkViewModel.timeCycling = timer.totalAccumulatedTime
+                self.timer.stop()
+                cyclingStatus.stoppedCycling()
+                
+                persistenceController.storeBikeRide(locations: locationManager.cyclingLocations,
+                                                    speeds: locationManager.cyclingSpeeds,
+                                                    distance: locationManager.cyclingTotalDistance,
+                                                    elevations: locationManager.cyclingAltitudes,
+                                                    startTime: petWalkViewModel.cyclingStartTime,
+                                                    time: petWalkViewModel.timeCycling, id: locationManager.id)
+                
+                locationManager.clearLocationArray()
+                locationManager.stopTrackingBackgroundLocation()
             }
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
                     .fill(Color.white)
                     .frame(width: 100, height: 50)
                     .opacity(0.6)
-                Text("\(minutes) min")
+                Text(formatTimeString(accumulatedTime: timer.totalAccumulatedTime))
             }
         }
     }
+    
+    
+    
 }
 
 
+func formatTimeString(accumulatedTime: TimeInterval) -> String {
+    let hours = Int(accumulatedTime) / 3600
+    let minutes = Int(accumulatedTime) / 60 % 60
+    let seconds = Int(accumulatedTime) % 60
+    return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+}

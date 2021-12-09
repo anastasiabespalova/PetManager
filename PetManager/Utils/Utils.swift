@@ -80,7 +80,6 @@ struct TextView: UIViewRepresentable {
             }
 
             func textViewDidChange(_ textView: UITextView) {
-                print("text now: \(String(describing: textView.text!))")
                 self.parent.text = textView.text
             }
         }

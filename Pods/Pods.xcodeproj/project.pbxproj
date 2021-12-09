@@ -3,77 +3,113 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10246559A12926477850CAD2D6A2CE13 /* Pods-PetManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DB4F49393DA68D67FC5F39CE334CED /* Pods-PetManager-dummy.m */; };
+		04516B10D23612F1EF169D07F5E5D412 /* AppKitIntrospectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8E0AC1C45E7A4E894FED8A9E32270 /* AppKitIntrospectionView.swift */; };
+		11764697E09F25872A1EEC92A0913EE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		26A76676C1314B46DF5F1F1313ABE2F4 /* Introspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC6F16DDC24A597153CAEA14738DBED /* Introspect.swift */; };
 		26B8DAB53FC00BBA5C2AE347845CEDA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		28CC085346EF6B4ED11CE56D158890B0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD8E33C0494A367EE69B22B00BC0654 /* UIFont.swift */; };
-		2979B9B5DAC55659E6766280E4EDF619 /* HighlightingTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A14CEE1E897FF2C284CB55A1DADB4 /* HighlightingTextEditor.swift */; };
-		3535E07B4A5ADF8B291917806A621EE0 /* HighlightedTextEditor.UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB959DD28C0440A307FFDD00BD2EA81F /* HighlightedTextEditor.UIKit.swift */; };
-		41A2290202AC30AE8B4953115BDB46B2 /* HighlightedTextEditor.AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D10EB5ADD460A97477C780D3932C8 /* HighlightedTextEditor.AppKit.swift */; };
-		48679B31743687A891823764BC6F907D /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED60C67B9D4C1B05E28B8AE5830EDB7 /* UITextView.swift */; };
-		55788915E6E79E2B08CF0ABE763B077F /* HighlightedTextEditor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A931A7C0B78E4FEE7D5DBEC74BFD188 /* HighlightedTextEditor-dummy.m */; };
-		59E52DA6E11DEBD46069ACDCBD4A6EC7 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2A52BEDBB3F5E3071D1F84070826 /* NSFont.swift */; };
-		6C1DE900C5EF0D948D63104CEB018C9D /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C576C7E5C0921610251F2B22D22ADD /* NSRegularExpression.swift */; };
-		8196CC8741BAB386C39ABCF3BAA49751 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		86A275811C5C7FF79153955DAE357788 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6EFD72FB5EED24B12E66D11F6CB489 /* Markdown.swift */; };
-		A1F34389EE169F171AE0107B1F25F0DE /* TextFormattingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A353A757D8FB9F65FB83ABB5EBC706F6 /* TextFormattingRule.swift */; };
-		A9C7331D87C792ABD34C079B68ED4D78 /* Pods-PetManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C369916D3CD97CF688B412C69280B8AA /* Pods-PetManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D14C717930A7CDBF0F7837C724AB5B03 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9155377DCEF762480DB9A3C8C63A94 /* URL.swift */; };
-		E0732C14F1C5A3BC0BAF7BD487B32AE1 /* HighlightedTextEditor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A9632D6E2F64C7ED44EB69C83878E2 /* HighlightedTextEditor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28CC085346EF6B4ED11CE56D158890B0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E907C0227C90ED602C494961E0775E0 /* UIFont.swift */; };
+		2979B9B5DAC55659E6766280E4EDF619 /* HighlightingTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F59D49792BD1E43E6152685503E48A /* HighlightingTextEditor.swift */; };
+		30DC7F5D76E2684F266D394FB1F08DCD /* Pods-PetManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C369916D3CD97CF688B412C69280B8AA /* Pods-PetManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3535E07B4A5ADF8B291917806A621EE0 /* HighlightedTextEditor.UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FB66E7D673806C3942DB397859C350 /* HighlightedTextEditor.UIKit.swift */; };
+		41A2290202AC30AE8B4953115BDB46B2 /* HighlightedTextEditor.AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E3790E3A6148069124665A92EBFAC /* HighlightedTextEditor.AppKit.swift */; };
+		48679B31743687A891823764BC6F907D /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A1722FABB92D00DB9FDEFF8E223F2 /* UITextView.swift */; };
+		55788915E6E79E2B08CF0ABE763B077F /* HighlightedTextEditor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1EA7AF9E8A5C6E704600BE0296F6B7 /* HighlightedTextEditor-dummy.m */; };
+		59E52DA6E11DEBD46069ACDCBD4A6EC7 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E215DDA50FC6B8C9EA74B05C615783 /* NSFont.swift */; };
+		6C1DE900C5EF0D948D63104CEB018C9D /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB21C5F83EDF290261048DB3D36156E /* NSRegularExpression.swift */; };
+		7EEB4E4C3FF377A4A8E5179F9516D6B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		86A275811C5C7FF79153955DAE357788 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FCF83C112757ECA7F4E5BC73F5AE4 /* Markdown.swift */; };
+		A1F34389EE169F171AE0107B1F25F0DE /* TextFormattingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E12C11F17ED6127961053BDDE17E324 /* TextFormattingRule.swift */; };
+		A8B0DC12BE200007F9EB2D65531A84CA /* UIKitIntrospectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678859E87A615914295D03F5DBBAD794 /* UIKitIntrospectionView.swift */; };
+		CBBB3C3152D4C6E2F661C3E5E813147C /* Introspect-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DDB6838A2C2EF5A39864A8FDEA7BBAA /* Introspect-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D14C717930A7CDBF0F7837C724AB5B03 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452EEC086A7599E7EF85E521A189FB63 /* URL.swift */; };
+		D8DE7403B046571663D236C6905B4E52 /* UIKitIntrospectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6505C3C7FBFD12CC3C977361D1F94CF /* UIKitIntrospectionViewController.swift */; };
+		DE9FE1FE2E7B9C17B1FB97C6E613DFF2 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81DE585B83E0A09EBC7750D88DAEAD /* ViewExtensions.swift */; };
+		E0732C14F1C5A3BC0BAF7BD487B32AE1 /* HighlightedTextEditor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C33DA68F9D1D3C803EC0F80A9FF5F38 /* HighlightedTextEditor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED7A9BEA288FD48464E93B2F2A07753C /* Pods-PetManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DB4F49393DA68D67FC5F39CE334CED /* Pods-PetManager-dummy.m */; };
+		FEE53BB666EC19D440243E6ED59F33CC /* Introspect-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F50EBE2633ABD242F2FA97DFFFE966 /* Introspect-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		88C661D92B3A32D345B2F5083CA44100 /* PBXContainerItemProxy */ = {
+		5D5A346B6F7BA5EB223E7034B858AC1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3DFB23E6FDDBC64ECB9DCBD45A2EEB01;
 			remoteInfo = HighlightedTextEditor;
 		};
+		6E27A930ACBA685425D603918A93FD06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97E3685499568DCCBA6C15905F707BDC;
+			remoteInfo = Introspect;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E7BBF38391B73C7095654E4CBA0552A /* HighlightedTextEditor-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "HighlightedTextEditor-Info.plist"; sourceTree = "<group>"; };
-		1D6EFD72FB5EED24B12E66D11F6CB489 /* Markdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Markdown.swift; path = Sources/HighlightedTextEditor/Presets/Markdown.swift; sourceTree = "<group>"; };
-		21C576C7E5C0921610251F2B22D22ADD /* NSRegularExpression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSRegularExpression.swift; path = "Sources/HighlightedTextEditor/System Extensions/NSRegularExpression.swift"; sourceTree = "<group>"; };
-		3A931A7C0B78E4FEE7D5DBEC74BFD188 /* HighlightedTextEditor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HighlightedTextEditor-dummy.m"; sourceTree = "<group>"; };
-		402D10EB5ADD460A97477C780D3932C8 /* HighlightedTextEditor.AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HighlightedTextEditor.AppKit.swift; path = Sources/HighlightedTextEditor/HighlightedTextEditor.AppKit.swift; sourceTree = "<group>"; };
-		6AD8E33C0494A367EE69B22B00BC0654 /* UIFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = "Sources/HighlightedTextEditor/System Extensions/UIFont.swift"; sourceTree = "<group>"; };
+		028BA2502DFB81EB55834124AE2E9DA0 /* HighlightedTextEditor-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "HighlightedTextEditor-Info.plist"; sourceTree = "<group>"; };
+		1C33DA68F9D1D3C803EC0F80A9FF5F38 /* HighlightedTextEditor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HighlightedTextEditor-umbrella.h"; sourceTree = "<group>"; };
+		1C410B83992420CEA4001F27FEE73E41 /* Introspect-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Introspect-prefix.pch"; sourceTree = "<group>"; };
+		1D1EA7AF9E8A5C6E704600BE0296F6B7 /* HighlightedTextEditor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HighlightedTextEditor-dummy.m"; sourceTree = "<group>"; };
+		26F59D49792BD1E43E6152685503E48A /* HighlightingTextEditor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HighlightingTextEditor.swift; path = Sources/HighlightedTextEditor/HighlightingTextEditor.swift; sourceTree = "<group>"; };
+		33E1A69F6C16B7E38E96A4CE97B84C0C /* HighlightedTextEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HighlightedTextEditor.debug.xcconfig; sourceTree = "<group>"; };
+		3D0A1722FABB92D00DB9FDEFF8E223F2 /* UITextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITextView.swift; path = "Sources/HighlightedTextEditor/System Extensions/UITextView.swift"; sourceTree = "<group>"; };
+		4214801500B57E210B787528FE401B0A /* Introspect.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Introspect.modulemap; sourceTree = "<group>"; };
+		42D8E0AC1C45E7A4E894FED8A9E32270 /* AppKitIntrospectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppKitIntrospectionView.swift; path = Introspect/AppKitIntrospectionView.swift; sourceTree = "<group>"; };
+		452EEC086A7599E7EF85E521A189FB63 /* URL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URL.swift; path = Sources/HighlightedTextEditor/Presets/URL.swift; sourceTree = "<group>"; };
+		4DDB6838A2C2EF5A39864A8FDEA7BBAA /* Introspect-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Introspect-umbrella.h"; sourceTree = "<group>"; };
+		4E1AECCFF81836A7C3143C6862C913A1 /* Introspect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Introspect.debug.xcconfig; sourceTree = "<group>"; };
+		50354FEB4EE5F0AF15EB0326B68606F1 /* Introspect-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Introspect-Info.plist"; sourceTree = "<group>"; };
+		519E3790E3A6148069124665A92EBFAC /* HighlightedTextEditor.AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HighlightedTextEditor.AppKit.swift; path = Sources/HighlightedTextEditor/HighlightedTextEditor.AppKit.swift; sourceTree = "<group>"; };
+		59E215DDA50FC6B8C9EA74B05C615783 /* NSFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSFont.swift; path = "Sources/HighlightedTextEditor/System Extensions/NSFont.swift"; sourceTree = "<group>"; };
+		678859E87A615914295D03F5DBBAD794 /* UIKitIntrospectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIKitIntrospectionView.swift; path = Introspect/UIKitIntrospectionView.swift; sourceTree = "<group>"; };
+		67FB66E7D673806C3942DB397859C350 /* HighlightedTextEditor.UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HighlightedTextEditor.UIKit.swift; path = Sources/HighlightedTextEditor/HighlightedTextEditor.UIKit.swift; sourceTree = "<group>"; };
 		6E77DBAC813DAD1AEAEA83315A02B29A /* Pods-PetManager-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PetManager-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6ED60C67B9D4C1B05E28B8AE5830EDB7 /* UITextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITextView.swift; path = "Sources/HighlightedTextEditor/System Extensions/UITextView.swift"; sourceTree = "<group>"; };
+		6E907C0227C90ED602C494961E0775E0 /* UIFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = "Sources/HighlightedTextEditor/System Extensions/UIFont.swift"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		767F23806D91A38DDD8591C016F5C2E8 /* HighlightedTextEditor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HighlightedTextEditor-prefix.pch"; sourceTree = "<group>"; };
+		7AB21C5F83EDF290261048DB3D36156E /* NSRegularExpression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSRegularExpression.swift; path = "Sources/HighlightedTextEditor/System Extensions/NSRegularExpression.swift"; sourceTree = "<group>"; };
 		7D221485E21EA8A402CB524865C66A7C /* Pods-PetManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PetManager.release.xcconfig"; sourceTree = "<group>"; };
 		7FC1AF8B9173CB857F3CECC780C86124 /* Pods-PetManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PetManager.modulemap"; sourceTree = "<group>"; };
 		80DB4F49393DA68D67FC5F39CE334CED /* Pods-PetManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PetManager-dummy.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A01AC8844126430D41D78EBB9E2F8040 /* HighlightedTextEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HighlightedTextEditor.framework; path = HighlightedTextEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A353A757D8FB9F65FB83ABB5EBC706F6 /* TextFormattingRule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextFormattingRule.swift; path = "Sources/HighlightedTextEditor/System Extensions/TextFormattingRule.swift"; sourceTree = "<group>"; };
-		AA95A60C800D6A8E2DBE2550F2DDD854 /* Pods_PetManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PetManager.framework; path = "Pods-PetManager.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD2D1DF7FA344B11839155A10E4109B /* HighlightedTextEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HighlightedTextEditor.debug.xcconfig; sourceTree = "<group>"; };
+		880FCF83C112757ECA7F4E5BC73F5AE4 /* Markdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Markdown.swift; path = Sources/HighlightedTextEditor/Presets/Markdown.swift; sourceTree = "<group>"; };
+		8E12C11F17ED6127961053BDDE17E324 /* TextFormattingRule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextFormattingRule.swift; path = "Sources/HighlightedTextEditor/System Extensions/TextFormattingRule.swift"; sourceTree = "<group>"; };
+		8E982A71CCF22587A4B811AB64DC2359 /* HighlightedTextEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HighlightedTextEditor.release.xcconfig; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E2178D6366C401D934C8AC2E815EE78 /* HighlightedTextEditor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HighlightedTextEditor-prefix.pch"; sourceTree = "<group>"; };
+		A01AC8844126430D41D78EBB9E2F8040 /* HighlightedTextEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HighlightedTextEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A98119A9EFCEE20B30290B8F1EA85765 /* HighlightedTextEditor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = HighlightedTextEditor.modulemap; sourceTree = "<group>"; };
+		AA95A60C800D6A8E2DBE2550F2DDD854 /* Pods_PetManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B510048FAE70D9D26A8B498A4F53EAB4 /* Pods-PetManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PetManager.debug.xcconfig"; sourceTree = "<group>"; };
 		B5B53E2C5FCE958A9F413800FCF3D5CF /* Pods-PetManager-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PetManager-acknowledgements.plist"; sourceTree = "<group>"; };
 		B95B02707605B4F7C03C05023B2376F5 /* Pods-PetManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PetManager-Info.plist"; sourceTree = "<group>"; };
+		BEF74915458BB4832DDF18C40100FC37 /* Introspect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Introspect.release.xcconfig; sourceTree = "<group>"; };
 		C369916D3CD97CF688B412C69280B8AA /* Pods-PetManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PetManager-umbrella.h"; sourceTree = "<group>"; };
+		D0A70003FD5E49B30CA83DAAFE03116B /* Introspect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Introspect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6505C3C7FBFD12CC3C977361D1F94CF /* UIKitIntrospectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIKitIntrospectionViewController.swift; path = Introspect/UIKitIntrospectionViewController.swift; sourceTree = "<group>"; };
 		D7BBAA2B40F97AFDC1A9E5635560C0C5 /* Pods-PetManager-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PetManager-frameworks.sh"; sourceTree = "<group>"; };
-		DB8AE28B7B9ADD7DEA68512FE0AC7031 /* HighlightedTextEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HighlightedTextEditor.release.xcconfig; sourceTree = "<group>"; };
-		EA9155377DCEF762480DB9A3C8C63A94 /* URL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URL.swift; path = Sources/HighlightedTextEditor/Presets/URL.swift; sourceTree = "<group>"; };
-		EB959DD28C0440A307FFDD00BD2EA81F /* HighlightedTextEditor.UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HighlightedTextEditor.UIKit.swift; path = Sources/HighlightedTextEditor/HighlightedTextEditor.UIKit.swift; sourceTree = "<group>"; };
-		ED8A14CEE1E897FF2C284CB55A1DADB4 /* HighlightingTextEditor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HighlightingTextEditor.swift; path = Sources/HighlightedTextEditor/HighlightingTextEditor.swift; sourceTree = "<group>"; };
-		F36D8D1D10B30D9025F67A20D85D971B /* HighlightedTextEditor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = HighlightedTextEditor.modulemap; sourceTree = "<group>"; };
-		F5A9632D6E2F64C7ED44EB69C83878E2 /* HighlightedTextEditor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HighlightedTextEditor-umbrella.h"; sourceTree = "<group>"; };
-		FD1F2A52BEDBB3F5E3071D1F84070826 /* NSFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSFont.swift; path = "Sources/HighlightedTextEditor/System Extensions/NSFont.swift"; sourceTree = "<group>"; };
+		D8F50EBE2633ABD242F2FA97DFFFE966 /* Introspect-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Introspect-dummy.m"; sourceTree = "<group>"; };
+		DFC6F16DDC24A597153CAEA14738DBED /* Introspect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Introspect.swift; path = Introspect/Introspect.swift; sourceTree = "<group>"; };
+		FD81DE585B83E0A09EBC7750D88DAEAD /* ViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewExtensions.swift; path = Introspect/ViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5E0CFF013E0354FDC026A631F700670F /* Frameworks */ = {
+		16438FF1DBE1F74416EEFF332DB6E7A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8196CC8741BAB386C39ABCF3BAA49751 /* Foundation.framework in Frameworks */,
+				7EEB4E4C3FF377A4A8E5179F9516D6B2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31FA779C2E2C1439F386AC99AEC8D9FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11764697E09F25872A1EEC92A0913EE1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,12 +124,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		376695D7E8AD77EE8714CAD83FCCCA9F /* Pods */ = {
+		1B2826897A7AA0010AE33D8C12761F14 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CED9A4135E04EE6C9D5028916775A71F /* HighlightedTextEditor */,
+				2CF862BD2D0651AE014E7B4FD12447C1 /* HighlightedTextEditor */,
+				49503ACC9703E4EC0BFE341963F6D395 /* Introspect */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		2CF862BD2D0651AE014E7B4FD12447C1 /* HighlightedTextEditor */ = {
+			isa = PBXGroup;
+			children = (
+				519E3790E3A6148069124665A92EBFAC /* HighlightedTextEditor.AppKit.swift */,
+				67FB66E7D673806C3942DB397859C350 /* HighlightedTextEditor.UIKit.swift */,
+				26F59D49792BD1E43E6152685503E48A /* HighlightingTextEditor.swift */,
+				880FCF83C112757ECA7F4E5BC73F5AE4 /* Markdown.swift */,
+				59E215DDA50FC6B8C9EA74B05C615783 /* NSFont.swift */,
+				7AB21C5F83EDF290261048DB3D36156E /* NSRegularExpression.swift */,
+				8E12C11F17ED6127961053BDDE17E324 /* TextFormattingRule.swift */,
+				6E907C0227C90ED602C494961E0775E0 /* UIFont.swift */,
+				3D0A1722FABB92D00DB9FDEFF8E223F2 /* UITextView.swift */,
+				452EEC086A7599E7EF85E521A189FB63 /* URL.swift */,
+				B800EF79C8637AEC6AEAF4A6035DFFD5 /* Support Files */,
+			);
+			path = HighlightedTextEditor;
+			sourceTree = "<group>";
+		};
+		49503ACC9703E4EC0BFE341963F6D395 /* Introspect */ = {
+			isa = PBXGroup;
+			children = (
+				42D8E0AC1C45E7A4E894FED8A9E32270 /* AppKitIntrospectionView.swift */,
+				DFC6F16DDC24A597153CAEA14738DBED /* Introspect.swift */,
+				678859E87A615914295D03F5DBBAD794 /* UIKitIntrospectionView.swift */,
+				D6505C3C7FBFD12CC3C977361D1F94CF /* UIKitIntrospectionViewController.swift */,
+				FD81DE585B83E0A09EBC7750D88DAEAD /* ViewExtensions.swift */,
+				DF914BCB3A4890102970D0C4EACC3A29 /* Support Files */,
+			);
+			path = Introspect;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -112,38 +180,29 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		B734DB1F7AAB766CA61CC3EDEBE34481 /* Support Files */ = {
+		B800EF79C8637AEC6AEAF4A6035DFFD5 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F36D8D1D10B30D9025F67A20D85D971B /* HighlightedTextEditor.modulemap */,
-				3A931A7C0B78E4FEE7D5DBEC74BFD188 /* HighlightedTextEditor-dummy.m */,
-				0E7BBF38391B73C7095654E4CBA0552A /* HighlightedTextEditor-Info.plist */,
-				767F23806D91A38DDD8591C016F5C2E8 /* HighlightedTextEditor-prefix.pch */,
-				F5A9632D6E2F64C7ED44EB69C83878E2 /* HighlightedTextEditor-umbrella.h */,
-				AFD2D1DF7FA344B11839155A10E4109B /* HighlightedTextEditor.debug.xcconfig */,
-				DB8AE28B7B9ADD7DEA68512FE0AC7031 /* HighlightedTextEditor.release.xcconfig */,
+				A98119A9EFCEE20B30290B8F1EA85765 /* HighlightedTextEditor.modulemap */,
+				1D1EA7AF9E8A5C6E704600BE0296F6B7 /* HighlightedTextEditor-dummy.m */,
+				028BA2502DFB81EB55834124AE2E9DA0 /* HighlightedTextEditor-Info.plist */,
+				9E2178D6366C401D934C8AC2E815EE78 /* HighlightedTextEditor-prefix.pch */,
+				1C33DA68F9D1D3C803EC0F80A9FF5F38 /* HighlightedTextEditor-umbrella.h */,
+				33E1A69F6C16B7E38E96A4CE97B84C0C /* HighlightedTextEditor.debug.xcconfig */,
+				8E982A71CCF22587A4B811AB64DC2359 /* HighlightedTextEditor.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/HighlightedTextEditor";
 			sourceTree = "<group>";
 		};
-		CED9A4135E04EE6C9D5028916775A71F /* HighlightedTextEditor */ = {
+		C38B14D5B9F8AEC6AA07A69208ED5CE5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				402D10EB5ADD460A97477C780D3932C8 /* HighlightedTextEditor.AppKit.swift */,
-				EB959DD28C0440A307FFDD00BD2EA81F /* HighlightedTextEditor.UIKit.swift */,
-				ED8A14CEE1E897FF2C284CB55A1DADB4 /* HighlightingTextEditor.swift */,
-				1D6EFD72FB5EED24B12E66D11F6CB489 /* Markdown.swift */,
-				FD1F2A52BEDBB3F5E3071D1F84070826 /* NSFont.swift */,
-				21C576C7E5C0921610251F2B22D22ADD /* NSRegularExpression.swift */,
-				A353A757D8FB9F65FB83ABB5EBC706F6 /* TextFormattingRule.swift */,
-				6AD8E33C0494A367EE69B22B00BC0654 /* UIFont.swift */,
-				6ED60C67B9D4C1B05E28B8AE5830EDB7 /* UITextView.swift */,
-				EA9155377DCEF762480DB9A3C8C63A94 /* URL.swift */,
-				B734DB1F7AAB766CA61CC3EDEBE34481 /* Support Files */,
+				A01AC8844126430D41D78EBB9E2F8040 /* HighlightedTextEditor.framework */,
+				D0A70003FD5E49B30CA83DAAFE03116B /* Introspect.framework */,
+				AA95A60C800D6A8E2DBE2550F2DDD854 /* Pods_PetManager.framework */,
 			);
-			name = HighlightedTextEditor;
-			path = HighlightedTextEditor;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -151,8 +210,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				376695D7E8AD77EE8714CAD83FCCCA9F /* Pods */,
-				F5C1B1612D304C0B497F4D129A286986 /* Products */,
+				1B2826897A7AA0010AE33D8C12761F14 /* Pods */,
+				C38B14D5B9F8AEC6AA07A69208ED5CE5 /* Products */,
 				7D3F00625FB5DC0300FEF0DAE310376C /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -163,6 +222,21 @@
 				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF914BCB3A4890102970D0C4EACC3A29 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4214801500B57E210B787528FE401B0A /* Introspect.modulemap */,
+				D8F50EBE2633ABD242F2FA97DFFFE966 /* Introspect-dummy.m */,
+				50354FEB4EE5F0AF15EB0326B68606F1 /* Introspect-Info.plist */,
+				1C410B83992420CEA4001F27FEE73E41 /* Introspect-prefix.pch */,
+				4DDB6838A2C2EF5A39864A8FDEA7BBAA /* Introspect-umbrella.h */,
+				4E1AECCFF81836A7C3143C6862C913A1 /* Introspect.debug.xcconfig */,
+				BEF74915458BB4832DDF18C40100FC37 /* Introspect.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Introspect";
 			sourceTree = "<group>";
 		};
 		EACCB19A9D979561C43B8A7A5D284816 /* Pods-PetManager */ = {
@@ -182,23 +256,22 @@
 			path = "Target Support Files/Pods-PetManager";
 			sourceTree = "<group>";
 		};
-		F5C1B1612D304C0B497F4D129A286986 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A01AC8844126430D41D78EBB9E2F8040 /* HighlightedTextEditor.framework */,
-				AA95A60C800D6A8E2DBE2550F2DDD854 /* Pods_PetManager.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		A5BADB38F73279AB47E6784C03B1F321 /* Headers */ = {
+		9D3F3D16A6A471899C20A89D00928D40 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9C7331D87C792ABD34C079B68ED4D78 /* Pods-PetManager-umbrella.h in Headers */,
+				30DC7F5D76E2684F266D394FB1F08DCD /* Pods-PetManager-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4A87CCF965CA6A18F5C4D219FBD897B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBBB3C3152D4C6E2F661C3E5E813147C /* Introspect-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,19 +304,38 @@
 			productReference = A01AC8844126430D41D78EBB9E2F8040 /* HighlightedTextEditor.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B0A0BC2C72327282C1D3DD4A6171ED1E /* Pods-PetManager */ = {
+		97E3685499568DCCBA6C15905F707BDC /* Introspect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F482236930B9A9678C34EF596A645262 /* Build configuration list for PBXNativeTarget "Pods-PetManager" */;
+			buildConfigurationList = 16B9305882DF4E5359A9C88CFB34D3D7 /* Build configuration list for PBXNativeTarget "Introspect" */;
 			buildPhases = (
-				A5BADB38F73279AB47E6784C03B1F321 /* Headers */,
-				068F307BC0BA5B68BD1D2ECF2F44D329 /* Sources */,
-				5E0CFF013E0354FDC026A631F700670F /* Frameworks */,
-				5E8ED33670CB3AA2FFE5545248D4538F /* Resources */,
+				C4A87CCF965CA6A18F5C4D219FBD897B /* Headers */,
+				EDC774157FF0F74DA662C65D8D058FEF /* Sources */,
+				31FA779C2E2C1439F386AC99AEC8D9FC /* Frameworks */,
+				0CF6844CDBF49121C460836A8676E396 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8BDA4728B5594C5B4FA4029FACAB75CD /* PBXTargetDependency */,
+			);
+			name = Introspect;
+			productName = Introspect;
+			productReference = D0A70003FD5E49B30CA83DAAFE03116B /* Introspect.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B0A0BC2C72327282C1D3DD4A6171ED1E /* Pods-PetManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AED44BF1488704220EB215846A683BDB /* Build configuration list for PBXNativeTarget "Pods-PetManager" */;
+			buildPhases = (
+				9D3F3D16A6A471899C20A89D00928D40 /* Headers */,
+				0BD108DCFF712485E75096C464C87D0E /* Sources */,
+				16438FF1DBE1F74416EEFF332DB6E7A5 /* Frameworks */,
+				0EF789DFBFBFD20321C7339207076A28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				684A6CF923D6E0415DFAC721FBE05672 /* PBXTargetDependency */,
+				50EF46E6C594B10927A696CCC973F2B4 /* PBXTargetDependency */,
 			);
 			name = "Pods-PetManager";
 			productName = "Pods-PetManager";
@@ -257,10 +349,10 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1250;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -268,18 +360,26 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = F5C1B1612D304C0B497F4D129A286986 /* Products */;
+			productRefGroup = C38B14D5B9F8AEC6AA07A69208ED5CE5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				3DFB23E6FDDBC64ECB9DCBD45A2EEB01 /* HighlightedTextEditor */,
+				97E3685499568DCCBA6C15905F707BDC /* Introspect */,
 				B0A0BC2C72327282C1D3DD4A6171ED1E /* Pods-PetManager */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5E8ED33670CB3AA2FFE5545248D4538F /* Resources */ = {
+		0CF6844CDBF49121C460836A8676E396 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EF789DFBFBFD20321C7339207076A28 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -296,11 +396,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		068F307BC0BA5B68BD1D2ECF2F44D329 /* Sources */ = {
+		0BD108DCFF712485E75096C464C87D0E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10246559A12926477850CAD2D6A2CE13 /* Pods-PetManager-dummy.m in Sources */,
+				ED7A9BEA288FD48464E93B2F2A07753C /* Pods-PetManager-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,21 +422,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EDC774157FF0F74DA662C65D8D058FEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04516B10D23612F1EF169D07F5E5D412 /* AppKitIntrospectionView.swift in Sources */,
+				FEE53BB666EC19D440243E6ED59F33CC /* Introspect-dummy.m in Sources */,
+				26A76676C1314B46DF5F1F1313ABE2F4 /* Introspect.swift in Sources */,
+				A8B0DC12BE200007F9EB2D65531A84CA /* UIKitIntrospectionView.swift in Sources */,
+				D8DE7403B046571663D236C6905B4E52 /* UIKitIntrospectionViewController.swift in Sources */,
+				DE9FE1FE2E7B9C17B1FB97C6E613DFF2 /* ViewExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8BDA4728B5594C5B4FA4029FACAB75CD /* PBXTargetDependency */ = {
+		50EF46E6C594B10927A696CCC973F2B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Introspect;
+			target = 97E3685499568DCCBA6C15905F707BDC /* Introspect */;
+			targetProxy = 6E27A930ACBA685425D603918A93FD06 /* PBXContainerItemProxy */;
+		};
+		684A6CF923D6E0415DFAC721FBE05672 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = HighlightedTextEditor;
 			target = 3DFB23E6FDDBC64ECB9DCBD45A2EEB01 /* HighlightedTextEditor */;
-			targetProxy = 88C661D92B3A32D345B2F5083CA44100 /* PBXContainerItemProxy */;
+			targetProxy = 5D5A346B6F7BA5EB223E7034B858AC1F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2F9EA9C668DAC81A1A4927692D5BA729 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFD2D1DF7FA344B11839155A10E4109B /* HighlightedTextEditor.debug.xcconfig */;
+			baseConfigurationReference = 33E1A69F6C16B7E38E96A4CE97B84C0C /* HighlightedTextEditor.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -368,44 +487,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		35CF32996F73B24D83E59EF391192CB3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D221485E21EA8A402CB524865C66A7C /* Pods-PetManager.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-PetManager/Pods-PetManager-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PetManager/Pods-PetManager.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		4BC7450F9457737EE3E637BA155B56F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -473,6 +554,42 @@
 			};
 			name = Debug;
 		};
+		890D8A8EE29D9796F998FE27B08100F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEF74915458BB4832DDF18C40100FC37 /* Introspect.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Introspect/Introspect-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Introspect/Introspect-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Introspect/Introspect.modulemap";
+				PRODUCT_MODULE_NAME = Introspect;
+				PRODUCT_NAME = Introspect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		8B5A46FF8D3C1289CDEE3BAFACABCD2A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -535,7 +652,42 @@
 			};
 			name = Release;
 		};
-		C7CCC98F1A8C73D0B375F49A6928564C /* Debug */ = {
+		C2FEEF7BEE72A264ECF59D4A85DB9467 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E1AECCFF81836A7C3143C6862C913A1 /* Introspect.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Introspect/Introspect-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Introspect/Introspect-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Introspect/Introspect.modulemap";
+				PRODUCT_MODULE_NAME = Introspect;
+				PRODUCT_NAME = Introspect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CCA241BE87C97CB35E3710A35BBB9D08 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B510048FAE70D9D26A8B498A4F53EAB4 /* Pods-PetManager.debug.xcconfig */;
 			buildSettings = {
@@ -574,7 +726,7 @@
 		};
 		CD80B2D8C3BB0F87D751A53CC81D0C26 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB8AE28B7B9ADD7DEA68512FE0AC7031 /* HighlightedTextEditor.release.xcconfig */;
+			baseConfigurationReference = 8E982A71CCF22587A4B811AB64DC2359 /* HighlightedTextEditor.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -608,6 +760,44 @@
 			};
 			name = Release;
 		};
+		FAFED6C267409FDB54FD3A160CEDA263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D221485E21EA8A402CB524865C66A7C /* Pods-PetManager.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-PetManager/Pods-PetManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PetManager/Pods-PetManager.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -616,6 +806,15 @@
 			buildConfigurations = (
 				2F9EA9C668DAC81A1A4927692D5BA729 /* Debug */,
 				CD80B2D8C3BB0F87D751A53CC81D0C26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16B9305882DF4E5359A9C88CFB34D3D7 /* Build configuration list for PBXNativeTarget "Introspect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2FEEF7BEE72A264ECF59D4A85DB9467 /* Debug */,
+				890D8A8EE29D9796F998FE27B08100F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -629,11 +828,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F482236930B9A9678C34EF596A645262 /* Build configuration list for PBXNativeTarget "Pods-PetManager" */ = {
+		AED44BF1488704220EB215846A683BDB /* Build configuration list for PBXNativeTarget "Pods-PetManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C7CCC98F1A8C73D0B375F49A6928564C /* Debug */,
-				35CF32996F73B24D83E59EF391192CB3 /* Release */,
+				CCA241BE87C97CB35E3710A35BBB9D08 /* Debug */,
+				FAFED6C267409FDB54FD3A160CEDA263 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

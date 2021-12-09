@@ -8,114 +8,141 @@
 import SwiftUI
 import MapKit
 import ConfettiSwiftUI
+import CoreLocation
 
 
 struct WalkView: View {
+    @StateObject var timer = TimerViewModel()
     
-    @State var counter:Int = 1
+    let persistenceController = CoreDataManager.shared
+    //@State var counter: Int = 1
 
-    @ObservedObject var petViewModel = PetViewModel()
+    @ObservedObject var petWalkViewModel = PetWalkViewModel()
     
-    @State var walkStarted: Bool = false
-    @State var moreThenOnePet: Bool = false
-    
-    @State var showingPopupForPetWalkSelection = false
-    @State var showingPopupForWalkEnded = false
+   
 
-    @State var showingUndetailedWalkPooPopup = false
-    @State var showingUndetailedPooPopup = false
-    @State var showingDetailedWalkPooPopup = false
-    @State var showingDetailedPooPopup = false
-    @State var showingUndetailedWalkPeePopup = false
-    @State var showingUndetailedPeePopup = false
-    @State var showingDetailedWalkPeePopup = false
-    @State var showingDetailedPeePopup = false
+    @StateObject var locationManager = LocationViewModel.locationManager
+    @StateObject var cyclingStatus = CyclingStatus()
+    
+    // check if they initialize when it is unsupposed
+    // previously they initialized in ContentView
+    // now they are in PetWalkViewModel
+    //@State var cyclingStartTime = Date()
+   // @State var timeCycling: TimeInterval = 0.0
+    
+    @State var mapCentered: Bool = true
+    
         
     var body: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .topTrailing) {
-               WalkMap(coordinate: CLLocationCoordinate2D(latitude: 55.7522200, longitude:  37.6155600))
+                MapView(locationManager: locationManager,
+                        centerMapOnLocation: $mapCentered)
+                    .environmentObject(cyclingStatus)
+                    .environmentObject(petWalkViewModel)
                     .edgesIgnoringSafeArea(.all)
                 
-                WalkActivitiesMenu(walkStarted: $walkStarted,
-                                   moreThenOnePet: $moreThenOnePet,
-                                   showingUndetailedWalkPooPopup: $showingUndetailedWalkPooPopup,
-                                   showingUndetailedPooPopup: $showingUndetailedPooPopup,
-                                   showingDetailedWalkPooPopup: $showingDetailedWalkPooPopup,
-                                   showingDetailedPooPopup: $showingDetailedPooPopup,
-                                   showingUndetailedWalkPeePopup: $showingUndetailedWalkPeePopup,
-                                   showingUndetailedPeePopup: $showingUndetailedPeePopup,
-                                   showingDetailedWalkPeePopup: $showingDetailedWalkPeePopup,
-                                   showingDetailedPeePopup: $showingDetailedPeePopup)
+                
+                WalkActivitiesMenu()
                     .padding(20)
+                    .environmentObject(petWalkViewModel)
+                    .environmentObject(locationManager)
+                
             }
-            if walkStarted {
-                WalkProcessInfoMenu(walkStarted: $walkStarted,
-                                    showWalkEndedPopup: $showingPopupForWalkEnded)
-                    .environmentObject(petViewModel)
-                    .offset(y: -80)
+            if petWalkViewModel.walkStarted {
+                WalkProcessInfoMenu(locationManager: locationManager,
+                                    /* cyclingStartTime: $cyclingStartTime,
+                                    timeCycling: $timeCycling,*/
+                                    cyclingStatus: cyclingStatus,
+                                    timer: timer)
+                    .environmentObject(petWalkViewModel)
+                    .onAppear() {
+                        startCycling()
+                    }
+                    .offset(y: -30)
             }
             else {
-                WalkStartInfoMenu(walkStarted: $walkStarted,
-                                  showingPopupForPetWalkSelection: $showingPopupForPetWalkSelection)
-                    .environmentObject(petViewModel)
-                    .offset(y: -80)
+                WalkStartInfoMenu()
+                    .environmentObject(petWalkViewModel)
+                    .offset(y: -30)
             }
            
         }
         
-        
-        
-        .popup(isPresented: $showingPopupForPetWalkSelection, type: .`default`, closeOnTap: false) {
-            SelectPetForAWalkPopup(walkStarted: $walkStarted,
-                                   moreThenOnePet: $moreThenOnePet,
-                                   showingPopupForPetWalkSelection: $showingPopupForPetWalkSelection)
-                .environmentObject(petViewModel)
+        .popup(isPresented: $petWalkViewModel.showingPopupForPetWalkSelection, type: .`default`, closeOnTap: false) {
+            SelectPetForAWalkPopup()
+                .environmentObject(petWalkViewModel)
+            
 
         }
         
-        .popup(isPresented: $showingPopupForWalkEnded, type: .`default`, closeOnTap: false) {
-            DetailedWalkPopup(moreThenOnePet: $moreThenOnePet,
-                              showingPopupForWalkDetailed: $showingPopupForWalkEnded)
-                .environmentObject(petViewModel)
+        .popup(isPresented: $petWalkViewModel.showingPopupForWalkEnded, type: .`default`, closeOnTap: false) {
+            DetailedWalkPopup()
+                .environmentObject(petWalkViewModel)
+                .environmentObject(locationManager)
 
         }
         
         
-        
-        .popup(isPresented: $showingUndetailedWalkPooPopup, type: .`default`, closeOnTap: false) {
-            UndetailedPooPeeWalkPopup(showingPopup: $showingUndetailedWalkPooPopup, activity: /*PooActivity()*/Activity(title: "poo"))
-                .environmentObject(petViewModel)
+    
+        .popup(isPresented: $petWalkViewModel.showingUndetailedWalkPooPopup, type: .`default`, closeOnTap: false) {
+            UndetailedPooPeeWalkPopup(activity: Activity(title: "poo"))
+                .environmentObject(petWalkViewModel)
+                .environmentObject(locationManager)
         }
-        .popup(isPresented: $showingDetailedWalkPooPopup, type: .`default`, closeOnTap: false) {
-            DetailedPooPeeWalkPopup(showingPopup: $showingDetailedWalkPooPopup, activity: Activity(title: "poo"))
-                .environmentObject(petViewModel)
+        .popup(isPresented: $petWalkViewModel.showingDetailedWalkPooPopup, type: .`default`, closeOnTap: false) {
+            DetailedPooPeeWalkPopup(activity: Activity(title: "poo"))
+                .environmentObject(petWalkViewModel)
+                .environmentObject(locationManager)
         }
-        .popup(isPresented: $showingUndetailedPooPopup, autohideIn: 1) {
-            UndetailedPopup(activity: Activity(title: "poo"))
+
+        .popup(isPresented: $petWalkViewModel.showingUndetailedWalkPeePopup, type: .`default`, closeOnTap: false) {
+            UndetailedPooPeeWalkPopup(activity: Activity(title: "pee"))
+                .environmentObject(petWalkViewModel)
+                .environmentObject(locationManager)
         }
-        .popup(isPresented: $showingDetailedPooPopup, type: .`default`, closeOnTap: false) {
-            DetailedDescriptionPhotoPopup(showingPopup:  $showingDetailedPooPopup, activity: Activity(title: "poo"))
-        }
-        
-        
-        .popup(isPresented: $showingUndetailedWalkPeePopup, type: .`default`, closeOnTap: false) {
-            UndetailedPooPeeWalkPopup(showingPopup: $showingUndetailedWalkPeePopup, activity: Activity(title: "pee"))
-                .environmentObject(petViewModel)
-        }
-        .popup(isPresented: $showingDetailedWalkPeePopup, type: .`default`, closeOnTap: false) {
-            DetailedPooPeeWalkPopup(showingPopup: $showingDetailedWalkPeePopup, activity: Activity(title: "pee"))
-                .environmentObject(petViewModel)
-        }
-        .popup(isPresented: $showingUndetailedPeePopup, autohideIn: 1) {
-            UndetailedPopup(activity: Activity(title: "pee"))
-        }
-        .popup(isPresented: $showingDetailedPeePopup, type: .`default`, closeOnTap: false) {
-            DetailedDescriptionPhotoPopup(showingPopup:  $showingDetailedPeePopup, activity: Activity(title: "pee"))
+        .popup(isPresented: $petWalkViewModel.showingDetailedWalkPeePopup, type: .`default`, closeOnTap: false) {
+            DetailedPooPeeWalkPopup(activity: Activity(title: "pee"))
+                .environmentObject(petWalkViewModel)
+                .environmentObject(locationManager)
         }
         
+        .popup(isPresented: $petWalkViewModel.showingUndetailedPooPopup, autohideIn: 1) {
+            UndetailedPopupForWalk(activity: Activity(title: "poo"))
+                .environmentObject(petWalkViewModel)
+                .environmentObject(locationManager)
+        }
+        .popup(isPresented: $petWalkViewModel.showingUndetailedPeePopup, autohideIn: 1) {
+            UndetailedPopupForWalk(activity: Activity(title: "pee"))
+                .environmentObject(petWalkViewModel)
+                .environmentObject(locationManager)
+        }
         
+        .popup(isPresented: $petWalkViewModel.showingDetailedPooPopup, type: .`default`, closeOnTap: false) {
+            DetailedDescriptionPhotoPopupForWalk(showingPopup: $petWalkViewModel.showingDetailedPooPopup,
+                                          activity: Activity(title: "poo"))
+                .environmentObject(petWalkViewModel)
+                .environmentObject(locationManager)
+        }
+        
+        .popup(isPresented: $petWalkViewModel.showingDetailedPeePopup, type: .`default`, closeOnTap: false) {
+            DetailedDescriptionPhotoPopupForWalk(showingPopup: $petWalkViewModel.showingDetailedPeePopup,
+                                          activity: Activity(title: "pee"))
+                .environmentObject(petWalkViewModel)
+                .environmentObject(locationManager)
+        }
+
     }
+    
+    func startCycling() {
+        cyclingStatus.startedCycling()
+        
+        petWalkViewModel.cyclingStartTime = Date()
+        petWalkViewModel.timeCycling = 0.0
+        self.timer.start()
+    }
+    
+
 }
 
 

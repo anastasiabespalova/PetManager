@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ActivityEntry_" representedClassName="ActivityEntry_" syncable="YES" codeGenerationType="class">
+        <attribute name="activity_title_" optional="YES" attributeType="String"/>
+        <attribute name="archived_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="bikeRideId_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="description_" optional="YES" attributeType="String"/>
+        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="latitude_" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude_" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="media_path_" optional="YES" attributeType="String"/>
+        <attribute name="timestamp_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="forPet_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pet" inverseName="withActivityEntries_" inverseEntity="Pet"/>
+        <relationship name="withBikeRide_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BikeRide" inverseName="forActivityEntry_" inverseEntity="BikeRide"/>
+    </entity>
+    <entity name="BikeRide" representedClassName="BikeRide" syncable="YES">
+        <attribute name="cyclingDistance" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cyclingElevations" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="cyclingLatitudes" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="CLLocationDegrees"/>
+        <attribute name="cyclingLongitudes" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="CLLocationDegrees"/>
+        <attribute name="cyclingRouteName" optional="YES" attributeType="String"/>
+        <attribute name="cyclingSpeeds" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="CLLocationSpeed"/>
+        <attribute name="cyclingStartTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="cyclingTime" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="foo" optional="YES" attributeType="String"/>
+        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="forActivityEntry_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActivityEntry_" inverseName="withBikeRide_" inverseEntity="ActivityEntry_"/>
+    </entity>
     <entity name="Pet" representedClassName="Pet" syncable="YES" codeGenerationType="class">
         <attribute name="active_activities_" optional="YES" attributeType="String"/>
         <attribute name="archived_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -11,16 +37,13 @@
         <attribute name="inactive_activities_" optional="YES" attributeType="String"/>
         <attribute name="name_" optional="YES" attributeType="String"/>
         <attribute name="neutered_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="photo_" optional="YES" attributeType="Binary"/>
         <attribute name="timestamp_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-    </entity>
-    <entity name="Weight__" representedClassName="Weight__" syncable="YES" codeGenerationType="class">
-        <attribute name="archived_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="measure_" optional="YES" attributeType="String"/>
-        <attribute name="timestamp_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="value_" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="withActivityEntries_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActivityEntry_" inverseName="forPet_" inverseEntity="ActivityEntry_"/>
     </entity>
     <elements>
-        <element name="Pet" positionX="-48.2423095703125" positionY="-168.5458068847656" width="128" height="208"/>
-        <element name="Weight__" positionX="127.6511840820312" positionY="-172.1785583496094" width="128" height="103"/>
+        <element name="ActivityEntry_" positionX="100.8274536132812" positionY="-102.4935913085938" width="128" height="208"/>
+        <element name="Pet" positionX="-72.0723876953125" positionY="-150.4608459472656" width="128" height="238"/>
+        <element name="BikeRide" positionX="327.1912841796875" positionY="-101.0179443359375" width="128" height="208"/>
     </elements>
 </model>

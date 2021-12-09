@@ -11,12 +11,18 @@ import SwiftUI
 
 struct PetActivityHistoryView: View {
     
+    
+    @Binding var activityEntryInfo_: ActivityEntryInfo_
     @State var showingPopupUndetailed = false
-    @State var showingPopupDetailedDescriptionPhoto = false
+    @State var showingPopupDetailedDescriptionPhoto = false /*{
+        didSet {
+            activityHistoryViewModel.update()
+        }
+    }*/
     
     @State var showingPopupForWalkDetailed = false
     @State var showingPopupForWeightDetailed = false
-
+    
     @Binding var selectedActivity: Activity
     
     @Binding var showActivities: Bool
@@ -28,60 +34,75 @@ struct PetActivityHistoryView: View {
     @State var showArchivePopup = false
     
     @EnvironmentObject var activityHistoryViewModel: ActivityHistoryViewModel
+    // @EnvironmentObject var petViewModel: PetViewModel
     
     @State var size = "Medium"
     @GestureState var isDragging = false
     
     @Binding var forward: Bool
+    @State var petId: Int
     
     let impactMed = UIImpactFeedbackGenerator(style: .medium)
     
     @State var activityTestData = ActivityTestData()
-        
+    
     @State var viewId = UUID().uuidString
     var body: some View {
         ZStack {
-
+            
             VStack {
-               
+                
                 /*NavigationActivityHistoryHstack(showActivities: $showActivities,
-                                                showActivityHistory: $showActivityHistory,
-                                                activity: activityHistoryViewModel.activity,
-                                                forward: $forward)*/
+                 showActivityHistory: $showActivityHistory,
+                 activity: activityHistoryViewModel.activity,
+                 forward: $forward)*/
                 ZStack {
                     RoundedRectangle(cornerRadius: 25)
                         .frame(height: 115)
                         .foregroundColor(Color.white)
                         .opacity(0.2)
-                        
-                        
+                    
+                    
                     HStack {
                         Button(action: {
                             forward = false
                             showActivities = true
                             showActivityHistory = false
+                            
                         }) {
                             Image(systemName: "chevron.backward")
                                 .font(.title)
                                 .foregroundColor(.white)
                         }
                         Spacer()
+                        Image(activityHistoryViewModel.activity.title)
+                             .resizable()
+                             .aspectRatio(contentMode: .fit)
+                             .frame(height: 50)
+                        Spacer()
                             .frame(width: 30)
                         Text("\(activityHistoryViewModel.activity.title.capitalizingFirstLetter()) history")
                             .font(.largeTitle)
-                           // .fontWeight(.bold)
+                            // .fontWeight(.bold)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                         Spacer()
                         
                         Button(action: {
-                           
+                            
                         }) {
                             Image(systemName: "plus")
                                 .foregroundColor(.white)
                                 .onTapGesture {
                                     impactMed.impactOccurred()
                                     selectPopupForActivity(activity: activityHistoryViewModel.activity, isTapLong: false)
+                                    
+                                    activityHistoryViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(activity_title: selectedActivity.title, description: "", petId: petId))
+                                    for activityEntry in activityHistoryViewModel.getActivityEntriesForPet(petId: petId, activityTitle: selectedActivity.title) {
+                                        print(activityEntry.timestamp)
+                                    }
+                                    
+                                    print(petId)
                                 }
                                 .onLongPressGesture {
                                     impactMed.impactOccurred()
@@ -112,9 +133,10 @@ struct PetActivityHistoryView: View {
                                 
                                 // Buttons...
                                 HStack {
-                                   Spacer()
+                                    Spacer()
                                     Button(action: {
                                         showArchivePopup = true
+                                        
                                     }) {
                                         Image(systemName: "archivebox")
                                             .font(.title)
@@ -136,7 +158,7 @@ struct PetActivityHistoryView: View {
                                 
                                 
                                 WalkActivityTracker(activityTestData: activityTestData)
-                                // drag gesture...
+                                    // drag gesture...
                                     .offset(x:  activityTestData.offset)
                                     .gesture(DragGesture()
                                                 .updating($isDragging, body: {(value, state, _) in
@@ -153,7 +175,7 @@ struct PetActivityHistoryView: View {
                             
                         }
                         
-                        ForEach(activityHistoryViewModel.activityEntries.indices){index in
+                        ForEach(activityHistoryViewModel.activityEntries_.indices, id: \.self){index in
                             // Card View...
                             ZStack {
                                 Color.red
@@ -165,9 +187,15 @@ struct PetActivityHistoryView: View {
                                 
                                 // Buttons...
                                 HStack {
-                                   Spacer()
+                                    Spacer()
                                     Button(action: {
                                         showArchivePopup = true
+                                        activityHistoryViewModel.archivingIndex = index
+                                        
+                                        if activityHistoryViewModel.archivingIndex >= 0 {
+                                            activityHistoryViewModel.archiveActivityEntry(id: activityHistoryViewModel.archivingIndex)
+                                            activityHistoryViewModel.archivingIndex = -1
+                                        }
                                     }) {
                                         Image(systemName: "archivebox")
                                             .font(.title)
@@ -178,6 +206,8 @@ struct PetActivityHistoryView: View {
                                     
                                     Button(action: {
                                         showDeletionPopup = true
+                                        activityHistoryViewModel.deletingIndex = index
+                                        
                                     }) {
                                         Image(systemName: "trash")
                                             .font(.title)
@@ -188,9 +218,9 @@ struct PetActivityHistoryView: View {
                                 }
                                 
                                 
-                                ActivityHistoryCardView(activityEntry: activityHistoryViewModel.activityEntries[index])
-                                // drag gesture...
-                                    .offset(x:  activityHistoryViewModel.activityEntries[index].offset)
+                                ActivityHistoryCardView(activityEntry: activityHistoryViewModel.activityEntries_[index])
+                                    // drag gesture...
+                                    .offset(x:  activityHistoryViewModel.activityEntries_[index].offset)
                                     .gesture(DragGesture()
                                                 .updating($isDragging, body: {(value, state, _) in
                                                     state = true
@@ -205,53 +235,58 @@ struct PetActivityHistoryView: View {
                                 activityEntryIndex = index
                                 showActivityHistoryEntry = true
                                 showActivityHistory = false
+                                activityEntryInfo_ = activityHistoryViewModel.activityEntries_[activityEntryIndex]
                             }
                             .padding(.horizontal)
                             .padding(.top)
                         }
                         
                     }
+                    .frame(maxWidth: .infinity)
                     .padding(.bottom, 100)
                 }
             }
-           // .transition(.asymmetric(insertion: .move(edge: forward ? .trailing : .leading), removal: .move(edge: forward ? .leading : .trailing)))
+            // .transition(.asymmetric(insertion: .move(edge: forward ? .trailing : .leading), removal: .move(edge: forward ? .leading : .trailing)))
         } .id(viewId)
         // TODO: all possible popups for propeties
         
         .popup(isPresented: $showDeletionPopup, type: .`default`, closeOnTap: false) {
-            DeletePopup(deletedObject: "\(selectedActivity.title) activity", showingPopup: $showDeletionPopup)
-        }
-    
+            DeletePopupForActivityEntry(showingPopup: $showDeletionPopup)
+                .environmentObject(activityHistoryViewModel)
+         }
+        
         .popup(isPresented: $showArchivePopup, autohideIn: 1) {
             ArchivePopup()
         }
-            
         
-    .popup(isPresented: $showingPopupDetailedDescriptionPhoto, type: .`default`, closeOnTap: false) {
-        DetailedDescriptionPhotoPopup(showingPopup: $showingPopupDetailedDescriptionPhoto,
-                                        activity: selectedActivity)
-    }
+        
+         .popup(isPresented: $showingPopupDetailedDescriptionPhoto, type: .`default`, closeOnTap: false) {
+            DetailedDescriptionPhotoPopupForActivityHistoryView(showingPopup: $showingPopupDetailedDescriptionPhoto, petId: petId,
+         activity: selectedActivity)
+                .environmentObject(activityHistoryViewModel)
+         }
         .popup(isPresented: $showingPopupUndetailed, autohideIn: 1) {
             UndetailedPopup(activity: selectedActivity)
         }
-    
+        
         //Weight popups
-    .popup(isPresented: $showingPopupForWeightDetailed, type: .`default`, closeOnTap: false) {
-        DetailedWeightPopup(showingPopupForWeightDetailed: $showingPopupForWeightDetailed)
-    }
-    
+        .popup(isPresented: $showingPopupForWeightDetailed, type: .`default`, closeOnTap: false) {
+            DetailedWeightPopup(showingPopupForWeightDetailed: $showingPopupForWeightDetailed)
+        }
+        
         .popup(isPresented: $showingPopupForWalkDetailed, type: .`default`, closeOnTap: false) {
-            DetailedWalkPopupWithoutModel(showingPopup: $showingPopupForWalkDetailed)
+            DetailedWalkPopupWithoutModelForActivityHistoryView(petId: petId, showingPopup: $showingPopupForWalkDetailed)
+                .environmentObject(activityHistoryViewModel)
         }
         
     }
-    
 
+    
     func addCart(index: Int) {
 
         // Closing after added...
         withAnimation {
-            activityHistoryViewModel.activityEntries[index].offset = 0
+            activityHistoryViewModel.activityEntries_[index].offset = 0
         }
     }
     
@@ -260,7 +295,7 @@ struct PetActivityHistoryView: View {
             if index == -1 {
                 activityTestData.offset = value.translation.width
             } else {
-                activityHistoryViewModel.activityEntries[index].offset = value.translation.width
+                activityHistoryViewModel.activityEntries_[index].offset = value.translation.width
             }
             
         }
@@ -273,7 +308,7 @@ struct PetActivityHistoryView: View {
                 if index == -1 {
                     activityTestData.offset = -130
                 } else {
-                    activityHistoryViewModel.activityEntries[index].offset = -130
+                    activityHistoryViewModel.activityEntries_[index].offset = -130
                 }
                 
             } else {
@@ -281,7 +316,7 @@ struct PetActivityHistoryView: View {
                     activityTestData.offset = 0
                    
                 } else {
-                    activityHistoryViewModel.activityEntries[index].offset = 0
+                    activityHistoryViewModel.activityEntries_[index].offset = 0
                 }
                 
             }
@@ -347,26 +382,48 @@ struct WalkActivityTracker: View {
 
 struct ActivityHistoryCardView: View {
     
-    var activityEntry: ActivityEntry
+    var activityEntry: ActivityEntryInfo_
     
     var body: some View {
         HStack{
-            Image(activityEntry.activity.title)
+           // Image(activityEntry.activity.title)
+           /* Image(activityEntry.activity_title)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 80)
+                .frame(height: 50)*/
                // .frame(width: UIScreen.main.bounds.width / 3.2, height: 80)
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(activityEntry.activity.title.capitalizingFirstLetter())
-                        .fontWeight(.heavy)
-                        .foregroundColor(.black)
-                    Text("date: \(activityEntry.date)")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                    Text("value: \(activityEntry.value)")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+                   // Text(activityEntry.activity.title.capitalizingFirstLetter())
+                   /* Text(activityEntry.activity_title.capitalizingFirstLetter())
+                       // .fontWeight(.heavy)
+                        .foregroundColor(.black) */
+                    // Text("date: \(activityEntry.date)")
+                    
+                    HStack {
+                        HStack {
+                            Text(activityEntry.timestamp, style: .date)
+                            Text(activityEntry.timestamp, style: .time)
+                        }
+                        Spacer()
+                        if activityEntry.media_path != "" {
+                            Text("Has media")
+                                .foregroundColor(.gray)
+                        }
+                        
+                        
+                    }
+                    .font(.caption)
+                    //  .foregroundColor(.gray)
+                    
+                    //Text("value: \(activityEntry.value)")
+                    if activityEntry.description != "" {
+                        Text("\(activityEntry.description)")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
+                    
+                    
                     
                     /*Text("Some text")
                         .fontWeight(.heavy)
@@ -376,10 +433,10 @@ struct ActivityHistoryCardView: View {
             }
             Spacer(minLength: 0)
         }
-        .frame(height: 90)
+        .frame(height: 40)
         .padding()
         .background(Color.white)
-        .cornerRadius(20)
+        .cornerRadius(10)
       //  .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.13), radius: 10.0)
         .shadow(color: Color.black.opacity(0.08), radius: 5, x: 5, y: 5)
         .shadow(color: Color.black.opacity(0.08), radius: 5, x: -5, y: -5)

@@ -40,6 +40,7 @@ struct TakePhotoView: View {
         }
         .fullScreenCover(isPresented: $showImagePicker) {
                 ImagePicker(isShown: $showImagePicker, image: $image)
+                    .edgesIgnoringSafeArea(.all)
                     .onDisappear() {
                         if image != nil {
                             mediaItems.items.append(PhotoPickerModel(with: image!))
@@ -66,6 +67,8 @@ struct TakePhotoView: View {
     }
     
 }
+
+
 
 
 func getMediaImageName(using item: PhotoPickerModel) -> String {

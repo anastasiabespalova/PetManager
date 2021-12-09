@@ -7,6 +7,73 @@
 import SwiftUI
 import MapKit
 
+struct SyncView<Content: View>: View {
+    @Binding var selection: Int
+    var tag: Int
+    var content: () -> Content
+    @ViewBuilder
+    var body: some View {
+        if selection == tag {
+            content()
+        } else {
+            Spacer()
+        }
+    }
+}
+
+struct ContentView: View {
+   // @ObservedObject var petViewModel = PetViewModel()
+    @State var selection = 0
+  //  @State private var cyclingStartTime = Date()
+  //  @State private var timeCycling = 0.0
+   // @ObservedObject var petViewModel = PetViewModel()
+    var body: some View {
+        
+        TabView(selection: $selection) {
+            //Text("puk")
+            SyncView(selection: $selection, tag: 0) {
+            MainPageCircle()
+            }
+               // .environmentObject(petViewModel)
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("Home")
+                }
+                .tag(0)
+            SyncView(selection: $selection, tag: 1) {
+           PetList()
+            }
+             //   .environmentObject(petViewModel)
+            //PetJournalView()
+                .tabItem {
+                    Image(systemName: "list.dash")
+                    Text("List")
+                }
+                .tag(1)
+            //Text("puk")
+            WalkView(/*cyclingStartTime: $cyclingStartTime, timeCycling: $timeCycling*/)
+               // .environmentObject(petViewModel)
+                .tabItem {
+                    Image(systemName: "leaf.fill")
+                    Text("Walk")
+                }
+                .tag(2)
+           // Text("puk")
+            PersonView()
+               // .environmentObject(petViewModel)
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Profile")
+                }
+                .tag(3)
+        }
+        .accentColor(.orangeColor)
+            .onAppear() {
+                UITabBar.appearance().barTintColor = .white
+            }
+    }
+}
+
 struct TopFrameView: Shape {
     func path(in rect: CGRect) -> Path {
         let bezierPath = UIBezierPath()
@@ -40,7 +107,7 @@ enum Defs {
     static let bottomSafeAreaOffset = CGSize(width: 0, height: Defs.bottomSafeArea * 0.5)
 }
 
-struct ContentView: View {
+/*struct ContentView: View {
     @State var selectedIndex = 0
    // @Environment(\.managedObjectContext) var context
     
@@ -136,3 +203,4 @@ struct ContentView: View {
         
     }
 }
+*/

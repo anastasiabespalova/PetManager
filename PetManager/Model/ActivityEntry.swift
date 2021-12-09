@@ -4,7 +4,7 @@
 //
 //  Created by Анастасия Беспалова on 26.08.2021.
 //
-
+/*
 import Foundation
 import SwiftUI
 
@@ -23,3 +23,4 @@ struct ActivityEntry {
     // var weightMeasure: ? from enum
     // var media: ?
 }
+*/

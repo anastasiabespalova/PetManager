@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-PetManager/Pods-PetManager-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/HighlightedTextEditor/HighlightedTextEditor.framework
+${BUILT_PRODUCTS_DIR}/Introspect/Introspect.framework

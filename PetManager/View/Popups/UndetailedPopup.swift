@@ -33,6 +33,7 @@ struct UndetailedPopup: View {
          .background(Color.white)
          .cornerRadius(15.0)
          .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.13), radius: 10.0)
+         
     }
 }
 

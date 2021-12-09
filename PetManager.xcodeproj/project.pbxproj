@@ -11,7 +11,6 @@
 		333CA17326D40ABF0069F4EB /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA17226D40ABF0069F4EB /* PhotoPicker.swift */; };
 		333CA17526D40ADF0069F4EB /* PhotoPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA17426D40ADF0069F4EB /* PhotoPickerModel.swift */; };
 		333CA17726D40AFD0069F4EB /* LivePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA17626D40AFD0069F4EB /* LivePhotoView.swift */; };
-		333CA17A26D419920069F4EB /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 333CA17926D419920069F4EB /* sounds */; };
 		333CA18126D4FAB70069F4EB /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA18026D4FAB70069F4EB /* TextEditorView.swift */; };
 		333CA18326D546D10069F4EB /* MediaScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA18226D546D10069F4EB /* MediaScrollView.swift */; };
 		333CA18626D556260069F4EB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA18526D556260069F4EB /* ImagePicker.swift */; };
@@ -42,11 +41,10 @@
 		333CA1C426DA6B7D0069F4EB /* AddNewPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA1C326DA6B7D0069F4EB /* AddNewPet.swift */; };
 		333CA1C826DA87DB0069F4EB /* Pet+PetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA1C726DA87DB0069F4EB /* Pet+PetInfo.swift */; };
 		333CA1CA26DA98FF0069F4EB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA1C926DA98FF0069F4EB /* CoreDataManager.swift */; };
+		333CA1CC26DE60D00069F4EB /* SUImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA1CB26DE60CF0069F4EB /* SUImagePickerView.swift */; };
+		333CA1CE26DE92E50069F4EB /* ActivityEntry+ActivityEntryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333CA1CD26DE92E50069F4EB /* ActivityEntry+ActivityEntryInfo.swift */; };
 		3366E43226D12BA4000DF905 /* PetManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3366E43126D12BA4000DF905 /* PetManagerApp.swift */; };
-		3366E43626D12BAD000DF905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3366E43526D12BAD000DF905 /* Assets.xcassets */; };
-		3366E43926D12BAD000DF905 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3366E43826D12BAD000DF905 /* Preview Assets.xcassets */; };
 		3366E43B26D12BAD000DF905 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3366E43A26D12BAD000DF905 /* Persistence.swift */; };
-		3366E43E26D12BAD000DF905 /* PetManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3366E43C26D12BAD000DF905 /* PetManager.xcdatamodeld */; };
 		3366E44626D12BF9000DF905 /* CircleNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3366E44526D12BF9000DF905 /* CircleNavigation.swift */; };
 		3366E44826D1347F000DF905 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3366E44726D1347E000DF905 /* Color.swift */; };
 		3366E44B26D13DF7000DF905 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3366E44A26D13DF7000DF905 /* ContentView.swift */; };
@@ -59,6 +57,30 @@
 		3366E45C26D2DE54000DF905 /* MainPageCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3366E45B26D2DE54000DF905 /* MainPageCircle.swift */; };
 		3366E45E26D3A2C5000DF905 /* PetJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3366E45D26D3A2C3000DF905 /* PetJournalView.swift */; };
 		3366E46626D3A703000DF905 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3366E46526D3A703000DF905 /* Utils.swift */; };
+		337A20DF26DFB27F004382A8 /* ArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20DE26DFB27F004382A8 /* ArchiveViewModel.swift */; };
+		337A20E126E00A63004382A8 /* PagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20E026E00A63004382A8 /* PagingView.swift */; };
+		337A20E326E0D47A004382A8 /* ArchiveEntriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20E226E0D47A004382A8 /* ArchiveEntriesViewModel.swift */; };
+		337A20E626E14980004382A8 /* PetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20E526E1497F004382A8 /* PetList.swift */; };
+		337A20E826E230A8004382A8 /* PetEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20E726E230A7004382A8 /* PetEditViewModel.swift */; };
+		337A20EA26E24C28004382A8 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20E926E24C27004382A8 /* ActivityListView.swift */; };
+		337A20EC26E274DD004382A8 /* ActivityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20EB26E274DD004382A8 /* ActivityListViewModel.swift */; };
+		337A20EE26E2825F004382A8 /* ActivityHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20ED26E2825F004382A8 /* ActivityHistoryView.swift */; };
+		337A20F026E28F5B004382A8 /* ActivityEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20EF26E28F5B004382A8 /* ActivityEntryView.swift */; };
+		337A20F226E28F79004382A8 /* ActivityEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20F126E28F78004382A8 /* ActivityEntryViewModel.swift */; };
+		337A20F426EA3122004382A8 /* AddNewActivityPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20F326EA3121004382A8 /* AddNewActivityPopup.swift */; };
+		337A20F626EB592D004382A8 /* BikeRide+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20F526EB592D004382A8 /* BikeRide+CoreDataProperties.swift */; };
+		337A20FC26EB5EE7004382A8 /* PetManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3366E43C26D12BAD000DF905 /* PetManager.xcdatamodeld */; };
+		337A20FE26EB68D6004382A8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A20FD26EB68D6004382A8 /* Category.swift */; };
+		337A20FF26EB6963004382A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3366E43526D12BAD000DF905 /* Assets.xcassets */; };
+		337A210026EB6967004382A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3366E43826D12BAD000DF905 /* Preview Assets.xcassets */; };
+		337A210226EB9471004382A8 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A210126EB9471004382A8 /* LocationViewModel.swift */; };
+		337A210426EB99CE004382A8 /* PetWalkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A210326EB99CE004382A8 /* PetWalkViewModel.swift */; };
+		337A210726EB9B57004382A8 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A210626EB9B57004382A8 /* TimerViewModel.swift */; };
+		337A210926F11ECF004382A8 /* MapSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A210826F11ECF004382A8 /* MapSnapshotView.swift */; };
+		337A210B26F120F5004382A8 /* HistoryMetricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A210A26F120F5004382A8 /* HistoryMetricView.swift */; };
+		337A210D26F12148004382A8 /* MetricFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A210C26F12148004382A8 /* MetricFormatting.swift */; };
+		337A210F26F240DC004382A8 /* SlidingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A210E26F240DC004382A8 /* SlidingTabView.swift */; };
+		337A211126F2462D004382A8 /* MapTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A211026F2462D004382A8 /* MapTrackView.swift */; };
 		69DE886C5B2FAAD7BDA5EA8E /* Pods_PetManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43082BCF70A0AFCB8957921 /* Pods_PetManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +132,8 @@
 		333CA1C326DA6B7D0069F4EB /* AddNewPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPet.swift; sourceTree = "<group>"; };
 		333CA1C726DA87DB0069F4EB /* Pet+PetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pet+PetInfo.swift"; sourceTree = "<group>"; };
 		333CA1C926DA98FF0069F4EB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		333CA1CB26DE60CF0069F4EB /* SUImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUImagePickerView.swift; sourceTree = "<group>"; };
+		333CA1CD26DE92E50069F4EB /* ActivityEntry+ActivityEntryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntry+ActivityEntryInfo.swift"; sourceTree = "<group>"; };
 		3366E42E26D12BA4000DF905 /* PetManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3366E43126D12BA4000DF905 /* PetManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetManagerApp.swift; sourceTree = "<group>"; };
 		3366E43526D12BAD000DF905 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,6 +153,27 @@
 		3366E45B26D2DE54000DF905 /* MainPageCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageCircle.swift; sourceTree = "<group>"; };
 		3366E45D26D3A2C3000DF905 /* PetJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetJournalView.swift; sourceTree = "<group>"; };
 		3366E46526D3A703000DF905 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		337A20DE26DFB27F004382A8 /* ArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewModel.swift; sourceTree = "<group>"; };
+		337A20E026E00A63004382A8 /* PagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingView.swift; sourceTree = "<group>"; };
+		337A20E226E0D47A004382A8 /* ArchiveEntriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveEntriesViewModel.swift; sourceTree = "<group>"; };
+		337A20E526E1497F004382A8 /* PetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetList.swift; sourceTree = "<group>"; };
+		337A20E726E230A7004382A8 /* PetEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetEditViewModel.swift; sourceTree = "<group>"; };
+		337A20E926E24C27004382A8 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
+		337A20EB26E274DD004382A8 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
+		337A20ED26E2825F004382A8 /* ActivityHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistoryView.swift; sourceTree = "<group>"; };
+		337A20EF26E28F5B004382A8 /* ActivityEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityEntryView.swift; sourceTree = "<group>"; };
+		337A20F126E28F78004382A8 /* ActivityEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityEntryViewModel.swift; sourceTree = "<group>"; };
+		337A20F326EA3121004382A8 /* AddNewActivityPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewActivityPopup.swift; sourceTree = "<group>"; };
+		337A20F526EB592D004382A8 /* BikeRide+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BikeRide+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		337A20FD26EB68D6004382A8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		337A210126EB9471004382A8 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		337A210326EB99CE004382A8 /* PetWalkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetWalkViewModel.swift; sourceTree = "<group>"; };
+		337A210626EB9B57004382A8 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		337A210826F11ECF004382A8 /* MapSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSnapshotView.swift; sourceTree = "<group>"; };
+		337A210A26F120F5004382A8 /* HistoryMetricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryMetricView.swift; sourceTree = "<group>"; };
+		337A210C26F12148004382A8 /* MetricFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricFormatting.swift; sourceTree = "<group>"; };
+		337A210E26F240DC004382A8 /* SlidingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingTabView.swift; sourceTree = "<group>"; };
+		337A211026F2462D004382A8 /* MapTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackView.swift; sourceTree = "<group>"; };
 		6509A7E6DAD7CE00EA2F6FB3 /* Pods-PetManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetManager.debug.xcconfig"; path = "Target Support Files/Pods-PetManager/Pods-PetManager.debug.xcconfig"; sourceTree = "<group>"; };
 		699A0A946166AB09F1250D57 /* Pods-PetManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetManager.release.xcconfig"; path = "Target Support Files/Pods-PetManager/Pods-PetManager.release.xcconfig"; sourceTree = "<group>"; };
 		A43082BCF70A0AFCB8957921 /* Pods_PetManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,10 +218,10 @@
 				333CA1B326D7FBBA0069F4EB /* DetailedDescriptionPhotoPopup.swift */,
 				333CA1B526D7FF3E0069F4EB /* UndetailedPopup.swift */,
 				333CA18926D56BFE0069F4EB /* WeightPopups.swift */,
-				333CA1A026D688B30069F4EB /* WalkPopups.swift */,
 				333CA19726D672E60069F4EB /* SelectPetForAWalkPopup.swift */,
 				333CA1B026D7F99C0069F4EB /* ArchiveDeletePopups.swift */,
 				333CA1C326DA6B7D0069F4EB /* AddNewPet.swift */,
+				337A20F326EA3121004382A8 /* AddNewActivityPopup.swift */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -185,9 +230,10 @@
 			isa = PBXGroup;
 			children = (
 				333CA17226D40ABF0069F4EB /* PhotoPicker.swift */,
+				337A20E026E00A63004382A8 /* PagingView.swift */,
+				333CA1CB26DE60CF0069F4EB /* SUImagePickerView.swift */,
 				333CA1B826D82D6B0069F4EB /* ActivityTracker.swift */,
 				333CA18526D556260069F4EB /* ImagePicker.swift */,
-				333CA17426D40ADF0069F4EB /* PhotoPickerModel.swift */,
 				333CA17626D40AFD0069F4EB /* LivePhotoView.swift */,
 			);
 			path = Utils;
@@ -209,6 +255,7 @@
 				333CA19126D667600069F4EB /* WalkMap.swift */,
 				333CA18F26D65B890069F4EB /* WalkInfoMenu.swift */,
 				333CA18D26D657BD0069F4EB /* WalkActivitiesMenu.swift */,
+				333CA1A026D688B30069F4EB /* WalkPopups.swift */,
 			);
 			path = Walk;
 			sourceTree = "<group>";
@@ -260,13 +307,13 @@
 				333CA17926D419920069F4EB /* sounds */,
 				3366E44E26D17CD0000DF905 /* Utils */,
 				3366E43126D12BA4000DF905 /* PetManagerApp.swift */,
+				3366E45126D27B6F000DF905 /* Model */,
 				3366E45226D27B82000DF905 /* ViewModel */,
 				3366E43526D12BAD000DF905 /* Assets.xcassets */,
 				3366E43A26D12BAD000DF905 /* Persistence.swift */,
 				3366E43F26D12BAD000DF905 /* Info.plist */,
 				3366E43C26D12BAD000DF905 /* PetManager.xcdatamodeld */,
 				3366E43726D12BAD000DF905 /* Preview Content */,
-				3366E45126D27B6F000DF905 /* Model */,
 				3366E44926D1379E000DF905 /* View */,
 			);
 			path = PetManager;
@@ -283,6 +330,7 @@
 		3366E44926D1379E000DF905 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				337A20E426E1496D004382A8 /* List */,
 				333CA19926D6795C0069F4EB /* Home */,
 				333CA1B226D7F9A20069F4EB /* Journal */,
 				333CA19A26D679660069F4EB /* Walk */,
@@ -302,6 +350,7 @@
 				3366E44F26D17CEE000DF905 /* PopupView.swift */,
 				3366E45926D2D4FC000DF905 /* PagingDots.swift */,
 				333CA1A226D6903D0069F4EB /* RatingView.swift */,
+				337A210E26F240DC004382A8 /* SlidingTabView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -310,10 +359,15 @@
 			isa = PBXGroup;
 			children = (
 				333CA1C726DA87DB0069F4EB /* Pet+PetInfo.swift */,
+				337A210C26F12148004382A8 /* MetricFormatting.swift */,
+				337A20F526EB592D004382A8 /* BikeRide+CoreDataProperties.swift */,
+				337A20FD26EB68D6004382A8 /* Category.swift */,
+				333CA1CD26DE92E50069F4EB /* ActivityEntry+ActivityEntryInfo.swift */,
 				333CA1C926DA98FF0069F4EB /* CoreDataManager.swift */,
 				3366E45526D27C72000DF905 /* PetModel.swift */,
 				3366E45726D27FB6000DF905 /* ActivitiesModel.swift */,
 				333CA1AC26D7AAC20069F4EB /* ActivityEntry.swift */,
+				333CA17426D40ADF0069F4EB /* PhotoPickerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,9 +376,39 @@
 			isa = PBXGroup;
 			children = (
 				3366E45326D27BBF000DF905 /* PetViewModel.swift */,
+				337A210526EB9A21004382A8 /* Walk */,
+				337A20DE26DFB27F004382A8 /* ArchiveViewModel.swift */,
+				337A20E226E0D47A004382A8 /* ArchiveEntriesViewModel.swift */,
 				333CA1AA26D7AA850069F4EB /* ActivityHistoryViewModel.swift */,
+				337A20EB26E274DD004382A8 /* ActivityListViewModel.swift */,
+				337A20F126E28F78004382A8 /* ActivityEntryViewModel.swift */,
+				337A20E726E230A7004382A8 /* PetEditViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		337A20E426E1496D004382A8 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				337A20E526E1497F004382A8 /* PetList.swift */,
+				337A20E926E24C27004382A8 /* ActivityListView.swift */,
+				337A20ED26E2825F004382A8 /* ActivityHistoryView.swift */,
+				337A20EF26E28F5B004382A8 /* ActivityEntryView.swift */,
+				337A210A26F120F5004382A8 /* HistoryMetricView.swift */,
+				337A210826F11ECF004382A8 /* MapSnapshotView.swift */,
+				337A211026F2462D004382A8 /* MapTrackView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		337A210526EB9A21004382A8 /* Walk */ = {
+			isa = PBXGroup;
+			children = (
+				337A210126EB9471004382A8 /* LocationViewModel.swift */,
+				337A210626EB9B57004382A8 /* TimerViewModel.swift */,
+				337A210326EB99CE004382A8 /* PetWalkViewModel.swift */,
+			);
+			path = Walk;
 			sourceTree = "<group>";
 		};
 		475E7EF206B3C76AB69AEC27 /* Pods */ = {
@@ -402,9 +486,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3366E43926D12BAD000DF905 /* Preview Assets.xcassets in Resources */,
-				3366E43626D12BAD000DF905 /* Assets.xcassets in Resources */,
-				333CA17A26D419920069F4EB /* sounds in Resources */,
+				337A210026EB6967004382A8 /* Preview Assets.xcassets in Resources */,
+				337A20FF26EB6963004382A8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,8 +540,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				337A20FC26EB5EE7004382A8 /* PetManager.xcdatamodeld in Sources */,
+				337A210926F11ECF004382A8 /* MapSnapshotView.swift in Sources */,
 				333CA1A326D6903D0069F4EB /* RatingView.swift in Sources */,
 				333CA18E26D657BD0069F4EB /* WalkActivitiesMenu.swift in Sources */,
+				337A20FE26EB68D6004382A8 /* Category.swift in Sources */,
+				337A210F26F240DC004382A8 /* SlidingTabView.swift in Sources */,
 				333CA1A126D688B30069F4EB /* WalkPopups.swift in Sources */,
 				333CA1C826DA87DB0069F4EB /* Pet+PetInfo.swift in Sources */,
 				333CA1C226D92B8E0069F4EB /* NotificationsView.swift in Sources */,
@@ -466,23 +553,34 @@
 				333CA1B426D7FBBA0069F4EB /* DetailedDescriptionPhotoPopup.swift in Sources */,
 				333CA1BF26D92B370069F4EB /* EditPetActivitiesView.swift in Sources */,
 				333CA1AD26D7AAC20069F4EB /* ActivityEntry.swift in Sources */,
+				337A20E126E00A63004382A8 /* PagingView.swift in Sources */,
 				333CA19826D672E60069F4EB /* SelectPetForAWalkPopup.swift in Sources */,
 				333CA18A26D56BFE0069F4EB /* WeightPopups.swift in Sources */,
+				337A20E626E14980004382A8 /* PetList.swift in Sources */,
+				337A210D26F12148004382A8 /* MetricFormatting.swift in Sources */,
 				3366E45426D27BBF000DF905 /* PetViewModel.swift in Sources */,
 				333CA19026D65B890069F4EB /* WalkInfoMenu.swift in Sources */,
 				333CA1B626D7FF3E0069F4EB /* UndetailedPopup.swift in Sources */,
 				333CA17526D40ADF0069F4EB /* PhotoPickerModel.swift in Sources */,
+				337A20E326E0D47A004382A8 /* ArchiveEntriesViewModel.swift in Sources */,
 				3366E43B26D12BAD000DF905 /* Persistence.swift in Sources */,
 				333CA1CA26DA98FF0069F4EB /* CoreDataManager.swift in Sources */,
+				337A20E826E230A8004382A8 /* PetEditViewModel.swift in Sources */,
 				333CA17326D40ABF0069F4EB /* PhotoPicker.swift in Sources */,
 				3366E45026D17CEE000DF905 /* PopupView.swift in Sources */,
+				337A210226EB9471004382A8 /* LocationViewModel.swift in Sources */,
+				333CA1CE26DE92E50069F4EB /* ActivityEntry+ActivityEntryInfo.swift in Sources */,
 				3366E45626D27C72000DF905 /* PetModel.swift in Sources */,
+				337A20F626EB592D004382A8 /* BikeRide+CoreDataProperties.swift in Sources */,
+				337A20EE26E2825F004382A8 /* ActivityHistoryView.swift in Sources */,
 				3366E45C26D2DE54000DF905 /* MainPageCircle.swift in Sources */,
 				3366E43226D12BA4000DF905 /* PetManagerApp.swift in Sources */,
+				337A20F026E28F5B004382A8 /* ActivityEntryView.swift in Sources */,
 				333CA18326D546D10069F4EB /* MediaScrollView.swift in Sources */,
 				3366E45E26D3A2C5000DF905 /* PetJournalView.swift in Sources */,
 				3366E44B26D13DF7000DF905 /* ContentView.swift in Sources */,
 				333CA17126D3B3A60069F4EB /* TakePhotoView.swift in Sources */,
+				337A20EA26E24C28004382A8 /* ActivityListView.swift in Sources */,
 				3366E46626D3A703000DF905 /* Utils.swift in Sources */,
 				333CA19226D667600069F4EB /* WalkMap.swift in Sources */,
 				333CA1C426DA6B7D0069F4EB /* AddNewPet.swift in Sources */,
@@ -490,14 +588,22 @@
 				333CA1B926D82D6B0069F4EB /* ActivityTracker.swift in Sources */,
 				333CA1A926D7A65F0069F4EB /* PetActivityHistoryView.swift in Sources */,
 				333CA18C26D6399E0069F4EB /* WalkView.swift in Sources */,
+				337A210B26F120F5004382A8 /* HistoryMetricView.swift in Sources */,
 				333CA1A526D78F510069F4EB /* PersonView.swift in Sources */,
-				3366E43E26D12BAD000DF905 /* PetManager.xcdatamodeld in Sources */,
 				333CA1BD26D92AE20069F4EB /* EditPetInfoView.swift in Sources */,
 				333CA18126D4FAB70069F4EB /* TextEditorView.swift in Sources */,
+				337A20EC26E274DD004382A8 /* ActivityListViewModel.swift in Sources */,
 				3366E45A26D2D4FD000DF905 /* PagingDots.swift in Sources */,
+				333CA1CC26DE60D00069F4EB /* SUImagePickerView.swift in Sources */,
 				3366E44D26D17B77000DF905 /* ConnectionView.swift in Sources */,
+				337A20F226E28F79004382A8 /* ActivityEntryViewModel.swift in Sources */,
+				337A210426EB99CE004382A8 /* PetWalkViewModel.swift in Sources */,
 				3366E44626D12BF9000DF905 /* CircleNavigation.swift in Sources */,
+				337A210726EB9B57004382A8 /* TimerViewModel.swift in Sources */,
 				333CA1B126D7F99C0069F4EB /* ArchiveDeletePopups.swift in Sources */,
+				337A20F426EA3122004382A8 /* AddNewActivityPopup.swift in Sources */,
+				337A20DF26DFB27F004382A8 /* ArchiveViewModel.swift in Sources */,
+				337A211126F2462D004382A8 /* MapTrackView.swift in Sources */,
 				3366E44826D1347F000DF905 /* Color.swift in Sources */,
 				333CA1AB26D7AA850069F4EB /* ActivityHistoryViewModel.swift in Sources */,
 				333CA1A726D795D60069F4EB /* PetActivitiesView.swift in Sources */,

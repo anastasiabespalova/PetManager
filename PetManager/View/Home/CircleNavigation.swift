@@ -11,12 +11,14 @@ import AVFoundation
 
 
 struct CircleNavigation: View {
-    @Binding var pet: PetInfo
-   // @Binding var pet: Pet__
+    @State var pet: PetInfo
+    //let petId: Int
+    @StateObject var petViewModel: PetViewModel
+    // @Binding var pet: Pet__
     let impactMed = UIImpactFeedbackGenerator(style: .medium)
     
     // all possible popups
-    @State var showingPopupForFoodDetailed = false
+  /*  @State var showingPopupForFoodDetailed = false
     @State var showingPopupForFoodUndetailed = false
     
     @State var showingPopupForVomitDetailed = false
@@ -24,10 +26,7 @@ struct CircleNavigation: View {
     
     @State var showingPopupForPooDetailed = false
     @State var showingPopupForPooUndetailed = false
-    
-    
-    
-    
+*/
     // TODO: for training (like for walk) and for customizable medicines
     @State var showingPopupUndetailed = false
     @State var showingPopupDetailedDescriptionPhoto = false
@@ -40,134 +39,172 @@ struct CircleNavigation: View {
     
     
     @State var text: String = ""
- 
+    
     var body: some View {
-
-            VStack {
-                Text("\(pet.name)")
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                ZStack {
-                    
-                    LargeConnectionView(imageName: pet.defaultImage)
-                    
-                    HStack {
-                        if pet.active_activities_array.count > 0 {
+        
+        VStack {
+            Text("\(pet.name)")
+                //.foregroundColor(.white)
+                .fontWeight(.bold)
+            ZStack {
+                
+                //LargeConnectionView(imageName: pet.defaultImage)
+                LargeConnectionView(image: pet.photo!)
+                
+                HStack {
+                    if pet.active_activities_array.count > 0 {
                         ConnectionView(imageName: pet.active_activities_array[0].title)
                             .rotationEffect(.degrees(-30))
                             .onTapGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity:  pet.active_activities_array[0], isTapLong: false)
                                 selectedActivity = pet.active_activities_array[0]
+                                
+                                petViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(activity_title: selectedActivity.title, description: "", petId: pet.id))
+                                for activityEntry in petViewModel.getActivityEntriesForPet(petId: pet.id, activityTitle: selectedActivity.title) {
+                                    print(activityEntry.timestamp)
+                                }
                             }
                             .onLongPressGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity: pet.active_activities_array[0], isTapLong: true)
                                 selectedActivity = pet.active_activities_array[0]
+                                
+                                
                             }
-                        }
-                        Spacer()
-                        if pet.active_activities_array.count > 1 {
+                    }
+                    Spacer()
+                    if pet.active_activities_array.count > 1 {
                         ConnectionView(imageName: pet.active_activities_array[1].title)
                             .rotationEffect(.degrees(-30))
                             .onTapGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity: pet.active_activities_array[1], isTapLong: false)
                                 selectedActivity = pet.active_activities_array[1]
+                                
+                                petViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(activity_title: selectedActivity.title, description: "", petId: pet.id))
+                                for activityEntry in petViewModel.getActivityEntriesForPet(petId: pet.id, activityTitle: selectedActivity.title) {
+                                    print(activityEntry.timestamp)
+                                }
                             }
                             .onLongPressGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity: pet.active_activities_array[1], isTapLong: true)
                                 selectedActivity = pet.active_activities_array[1]
                             }
-                        }
-                    } //: HSTACK
-                    .rotationEffect(.degrees(30))
-                    
-                    HStack {
-                        if pet.active_activities_array.count > 2 {
+                    }
+                } //: HSTACK
+                .rotationEffect(.degrees(30))
+                
+                HStack {
+                    if pet.active_activities_array.count > 2 {
                         ConnectionView(imageName: pet.active_activities_array[2].title)
                             .rotationEffect(.degrees(-90))
                             .onTapGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity: pet.active_activities_array[2], isTapLong: false)
                                 selectedActivity = pet.active_activities_array[2]
+                                
+                                petViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(activity_title: selectedActivity.title, description: "", petId: pet.id))
+                                for activityEntry in petViewModel.getActivityEntriesForPet(petId: pet.id, activityTitle: selectedActivity.title) {
+                                    print(activityEntry.timestamp)
+                                }
                             }
                             .onLongPressGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity: pet.active_activities_array[2], isTapLong: true)
                                 selectedActivity = pet.active_activities_array[2]
                             }
-                        }
-                        Spacer()
-                        if pet.active_activities_array.count > 3 {
-                            ConnectionView(imageName: pet.active_activities_array[3].title)
-                                .rotationEffect(.degrees(-90))
-                                .onTapGesture {
-                                    impactMed.impactOccurred()
-                                    selectPopupForActivity(activity: pet.active_activities_array[3], isTapLong: false)
-                                    selectedActivity = pet.active_activities_array[3]
+                    }
+                    Spacer()
+                    if pet.active_activities_array.count > 3 {
+                        ConnectionView(imageName: pet.active_activities_array[3].title)
+                            .rotationEffect(.degrees(-90))
+                            .onTapGesture {
+                                impactMed.impactOccurred()
+                                selectPopupForActivity(activity: pet.active_activities_array[3], isTapLong: false)
+                                selectedActivity = pet.active_activities_array[3]
+                                
+                                petViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(activity_title: selectedActivity.title, description: "", petId: pet.id))
+                                for activityEntry in petViewModel.getActivityEntriesForPet(petId: pet.id, activityTitle: selectedActivity.title) {
+                                    print(activityEntry.timestamp)
                                 }
-                                .onLongPressGesture {
-                                    impactMed.impactOccurred()
-                                    selectPopupForActivity(activity: pet.active_activities_array[3], isTapLong: true)
-                                    selectedActivity = pet.active_activities_array[3]
-                                }
-                        }
-                       
-                    } //: HSTACK
-                    .rotationEffect(.degrees(90))
+                            }
+                            .onLongPressGesture {
+                                impactMed.impactOccurred()
+                                selectPopupForActivity(activity: pet.active_activities_array[3], isTapLong: true)
+                                selectedActivity = pet.active_activities_array[3]
+                            }
+                    }
                     
-                    HStack {
-                        if pet.active_activities_array.count > 4 {
+                } //: HSTACK
+                .rotationEffect(.degrees(90))
+                
+                HStack {
+                    if pet.active_activities_array.count > 4 {
                         ConnectionView(imageName: pet.active_activities_array[4].title)
                             .rotationEffect(.degrees(30))
                             .onTapGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity: pet.active_activities_array[4], isTapLong: false)
                                 selectedActivity = pet.active_activities_array[4]
+                                
+                                petViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(activity_title: selectedActivity.title, description: "", petId: pet.id))
+                                for activityEntry in petViewModel.getActivityEntriesForPet(petId: pet.id, activityTitle: selectedActivity.title) {
+                                    print(activityEntry.timestamp)
+                                }
                             }
                             .onLongPressGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity: pet.active_activities_array[4], isTapLong: true)
                                 selectedActivity = pet.active_activities_array[4]
                             }
-                        }
-                        Spacer()
-                        if pet.active_activities_array.count > 5 {
+                    }
+                    Spacer()
+                    if pet.active_activities_array.count > 5 {
                         ConnectionView(imageName: pet.active_activities_array[5].title)
                             .rotationEffect(.degrees(30))
                             .onTapGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity: pet.active_activities_array[5], isTapLong: false)
                                 selectedActivity = pet.active_activities_array[5]
+                                
+                                petViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(activity_title: selectedActivity.title, description: "", petId: pet.id))
+                                for activityEntry in petViewModel.getActivityEntriesForPet(petId: pet.id, activityTitle: selectedActivity.title) {
+                                    print(activityEntry.timestamp)
+                                }
                             }
                             .onLongPressGesture {
                                 impactMed.impactOccurred()
                                 selectPopupForActivity(activity: pet.active_activities_array[5], isTapLong: true)
                                 selectedActivity = pet.active_activities_array[5]
                             }
-                        }
-                            
-                    } //: HSTACK
-                    .rotationEffect(.degrees(-30))
+                    }
                     
-                } //: ZSTACK
-                .frame(width: 340, height: 340)
+                } //: HSTACK
+                .rotationEffect(.degrees(-30))
                 
-                Text("Other needs")
-                    .foregroundColor(.white)
-                
-                ScrollView(.horizontal) {
-                    HStack {
-                        if pet.active_activities_array.count > 6 {
+            } //: ZSTACK
+            .frame(width: 340, height: 340)
+            
+            Text("Other needs")
+               // .foregroundColor(.white)
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    if pet.active_activities_array.count > 6 {
                         ForEach(6..<pet.active_activities_array.count) { index in
                             SmallConnectionView(imageName: pet.active_activities_array[index].title)
-                              //  .rotationEffect(.degrees(-90))
+                                //  .rotationEffect(.degrees(-90))
                                 .onTapGesture {
                                     impactMed.impactOccurred()
                                     selectPopupForActivity(activity: pet.active_activities_array[index], isTapLong: false)
                                     selectedActivity = pet.active_activities_array[index]
+                                    
+                                    petViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(activity_title: selectedActivity.title, description: "", petId: pet.id))
+                                    for activityEntry in petViewModel.getActivityEntriesForPet(petId: pet.id, activityTitle: selectedActivity.title) {
+                                        print(activityEntry.timestamp)
+                                    }
                                     
                                 }
                                 .onLongPressGesture {
@@ -176,58 +213,62 @@ struct CircleNavigation: View {
                                     selectedActivity = pet.active_activities_array[index]
                                 }
                         }
-                        }
                     }
                 }
-                .padding()
-                
             }
+            .padding()
             
-        // TODO: all possible popups for propeties
-            
-        .popup(isPresented: $showingPopupDetailedDescriptionPhoto, type: .`default`, closeOnTap: false) {
-            DetailedDescriptionPhotoPopup(showingPopup: $showingPopupDetailedDescriptionPhoto,
-                                            activity: selectedActivity)
         }
-            .popup(isPresented: $showingPopupUndetailed, autohideIn: 1) {
-                UndetailedPopup(activity: selectedActivity)
-            }
         
-            //Weight popups
+        // TODO: all possible popups for propeties
+        
+        .popup(isPresented: $showingPopupDetailedDescriptionPhoto, type: .`default`, closeOnTap: false) {
+            DetailedDescriptionPhotoPopup(showingPopup: $showingPopupDetailedDescriptionPhoto, petId: pet.id,
+                                          activity: selectedActivity)
+                .environmentObject(petViewModel)
+        }
+        
+        .popup(isPresented: $showingPopupUndetailed, autohideIn: 1) {
+            UndetailedPopup(activity: selectedActivity)
+            
+        }
+        
+        //Weight popups
         .popup(isPresented: $showingPopupForWeightDetailed, type: .`default`, closeOnTap: false) {
             DetailedWeightPopup(showingPopupForWeightDetailed: $showingPopupForWeightDetailed)
         }
         
-            .popup(isPresented: $showingPopupForWalkDetailed, type: .`default`, closeOnTap: false) {
-                DetailedWalkPopupWithoutModel(showingPopup: $showingPopupForWalkDetailed)
-            }
-
-            
-    /*        //Food Popups
-        .popup(isPresented: $showingPopupForFoodDetailed, type: .`default`, closeOnTap: false) {
-            DetailedFoodPopup(showingPopupForFoodDetailed: $showingPopupForFoodDetailed)
-        }
-        .popup(isPresented: $showingPopupForFoodUndetailed, autohideIn: 1) {
-            UndetailedFoodPopup()
-        }
-            
-            //Vomit Popups
-        .popup(isPresented: $showingPopupForVomitDetailed, type: .`default`, closeOnTap: false) {
-            DetailedVomitPopup(showingPopupForVomitDetailed: $showingPopupForVomitDetailed)
-        }
-        .popup(isPresented: $showingPopupForVomitUndetailed, autohideIn: 1) {
-            UndetailedVomitPopup()
+        .popup(isPresented: $showingPopupForWalkDetailed, type: .`default`, closeOnTap: false) {
+            DetailedWalkPopupWithoutModel(petId: pet.id, showingPopup: $showingPopupForWalkDetailed)
+                .environmentObject(petViewModel)
         }
         
-            //Poo popups
-        .popup(isPresented: $showingPopupForPooDetailed, type: .`default`, closeOnTap: false) {
-            DetailedPooPopup(showingPopupForPooDetailed: $showingPopupForPooDetailed)
-        }
-        .popup(isPresented: $showingPopupForPooUndetailed, autohideIn: 1) {
-            UndetailedPooPopup()
-        }*/
-    
-       
+        
+        /*        //Food Popups
+         .popup(isPresented: $showingPopupForFoodDetailed, type: .`default`, closeOnTap: false) {
+         DetailedFoodPopup(showingPopupForFoodDetailed: $showingPopupForFoodDetailed)
+         }
+         .popup(isPresented: $showingPopupForFoodUndetailed, autohideIn: 1) {
+         UndetailedFoodPopup()
+         }
+         
+         //Vomit Popups
+         .popup(isPresented: $showingPopupForVomitDetailed, type: .`default`, closeOnTap: false) {
+         DetailedVomitPopup(showingPopupForVomitDetailed: $showingPopupForVomitDetailed)
+         }
+         .popup(isPresented: $showingPopupForVomitUndetailed, autohideIn: 1) {
+         UndetailedVomitPopup()
+         }
+         
+         //Poo popups
+         .popup(isPresented: $showingPopupForPooDetailed, type: .`default`, closeOnTap: false) {
+         DetailedPooPopup(showingPopupForPooDetailed: $showingPopupForPooDetailed)
+         }
+         .popup(isPresented: $showingPopupForPooUndetailed, autohideIn: 1) {
+         UndetailedPooPopup()
+         }*/
+        
+        
         
     }
     

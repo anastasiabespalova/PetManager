@@ -9,52 +9,59 @@ import SwiftUI
 
 struct WalkActivitiesMenu: View {
     let impactMed = UIImpactFeedbackGenerator(style: .medium)
-    @Binding var walkStarted: Bool
-    @Binding var moreThenOnePet: Bool
-    
-    @Binding var showingUndetailedWalkPooPopup: Bool
-    @Binding var showingUndetailedPooPopup: Bool
-    @Binding var showingDetailedWalkPooPopup: Bool
-    @Binding var showingDetailedPooPopup: Bool
-    @Binding var showingUndetailedWalkPeePopup: Bool
-    @Binding var showingUndetailedPeePopup: Bool
-    @Binding var showingDetailedWalkPeePopup: Bool
-    @Binding var showingDetailedPeePopup: Bool
+    @EnvironmentObject var petWalkViewModel: PetWalkViewModel
+    @EnvironmentObject var locationManager: LocationViewModel
     
     var body: some View {
         HStack() {
             SmallConnectionView(imageName: Activity(title: "poo").title)
             .onTapGesture {
                 impactMed.impactOccurred()
-                if walkStarted && moreThenOnePet {
-                    showingUndetailedWalkPooPopup = true
-                } else if walkStarted {
-                    showingUndetailedPooPopup = true
+                if petWalkViewModel.walkStarted && petWalkViewModel.moreThenOnePet {
+                    petWalkViewModel.showingUndetailedWalkPooPopup = true
+                } else if petWalkViewModel.walkStarted {
+                    petWalkViewModel.showingUndetailedPooPopup = true
+                    if petWalkViewModel.petsOnWalk.count != 0 {
+                        petWalkViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(
+                                                            activity_title: "poo",
+                                                            petId: petWalkViewModel.petsOnWalk[0].id,
+                                                            latitude: (locationManager.lastLocation?.coordinate.latitude)!,
+                                                            longitude: (locationManager.lastLocation?.coordinate.longitude)!,
+                                                            bikeId: locationManager.id))
+                    }
                 }
             }
             .onLongPressGesture {
                 impactMed.impactOccurred()
-                if walkStarted && moreThenOnePet {
-                    showingDetailedWalkPooPopup = true
-                } else if walkStarted {
-                    showingDetailedPooPopup = true
+                if petWalkViewModel.walkStarted && petWalkViewModel.moreThenOnePet {
+                    petWalkViewModel.showingDetailedWalkPooPopup = true
+                } else if petWalkViewModel.walkStarted {
+                    petWalkViewModel.showingDetailedPooPopup = true
                 }
             }
             SmallConnectionView(imageName: Activity(title: "pee").title)
             .onTapGesture {
                 impactMed.impactOccurred()
-                if walkStarted && moreThenOnePet {
-                    showingUndetailedWalkPeePopup = true
-                } else if walkStarted {
-                    showingUndetailedPeePopup = true
+                if petWalkViewModel.walkStarted && petWalkViewModel.moreThenOnePet {
+                    petWalkViewModel.showingUndetailedWalkPeePopup = true
+                } else if petWalkViewModel.walkStarted {
+                    petWalkViewModel.showingUndetailedPeePopup = true
+                    if petWalkViewModel.petsOnWalk.count != 0 {
+                        petWalkViewModel.addActivityEntry(activityEntry: ActivityEntryInfo_(
+                                                            activity_title: "pee",
+                                                            petId: petWalkViewModel.petsOnWalk[0].id,
+                                                            latitude: (locationManager.lastLocation?.coordinate.latitude)!,
+                                                            longitude: (locationManager.lastLocation?.coordinate.longitude)!,
+                                                            bikeId: locationManager.id))
+                    }
                 }
             }
             .onLongPressGesture {
                 impactMed.impactOccurred()
-                if walkStarted && moreThenOnePet {
-                    showingDetailedWalkPeePopup = true
-                } else if walkStarted {
-                    showingDetailedPeePopup = true
+                if petWalkViewModel.walkStarted && petWalkViewModel.moreThenOnePet {
+                    petWalkViewModel.showingDetailedWalkPeePopup = true
+                } else if petWalkViewModel.walkStarted {
+                    petWalkViewModel.showingDetailedPeePopup = true
                 }
             }
             

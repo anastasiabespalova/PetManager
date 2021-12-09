@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Activity {
+struct Activity: Hashable {
     var title: String
     var detailedView: Bool
     var offset: CGFloat
@@ -25,43 +25,103 @@ struct Activity {
         switch title {
         case "cage":
             self.title = "cage"
+            self.popupButton = "Cleaned up!"
+            self.description = "Keep the cage or tray clean. You can set up a reminder in the settings"
+            
+            self.popupUndetailedTitle = "Cleaned up!"
         case "claws":
             self.title = "claws"
+            self.popupButton = "Done"
+            self.description = "Keep track of the length of the claws for your pet's comfort"
+            
+            self.popupUndetailedTitle = "Looks great!"
         case "food":
             self.title = "food"
+            self.popupButton = "Bon Appetit!"
+            self.description = "Monitor the quality and quantity of food. If your pet ate something strange, you can add a photo or video"
+            
+            self.popupUndetailedTitle = "Bon Appetit!"
         case "parasites":
             self.title = "parasites"
+            self.popupButton = "Bye-bye parasites"
+            self.description = "Treat your pet from external and internal parasites in time. Add a photo or name of the drug used"
+            
+            self.popupUndetailedTitle = "Bye-bye parasites!"
         case "pee":
             self.title = "pee"
+            self.popupButton = "Done"
+            self.description = "Track urinary frequency, especially if your pet is having problems. If urine contains impurities, add a photo to show to the vet"
+            
+            self.popupUndetailedTitle = "Pee"
         case "pills":
             self.title = "pills"
+            self.popupButton = "Done"
+            self.description = "If your pet needs to take medications, mark so as not to forget. You can customize the list of drugs taken in the settings"
+            
+            self.popupUndetailedTitle = "Pills"
         case "poo":
             self.title = "poo"
+            self.popupButton = "Done"
+            self.description = "Monitor the frequency and quality of the poop. If it differs from usual, you can take a photo or video to show to the veterinarian"
+            
+            self.popupUndetailedTitle = "Great!"
         case "training":
             self.title = "training"
+            self.popupButton = "Good work!"
+            self.description = "Exercise your pet's brain. You can rate your workout and add a description to track your progress"
+            
+            self.popupUndetailedTitle = "Good work!"
         case "vaccine":
             self.title = "vaccine"
+            self.popupButton = "Done"
+            self.description = "If your pet needs vaccinations, set yourself a reminder so you don't forget. Because it matters"
+            
+            self.popupUndetailedTitle = "Good work!"
         case "vomit":
             self.title = "vomit"
+            self.popupButton = "Done"
+            self.description = "Sometimes vomiting is normal. But it is better to write down all cases and take a photo to show to the veterinarian"
+            
+            self.popupUndetailedTitle = "Ugggh!"
         case "walk":
             self.title = "walk"
+            self.popupButton = "Time to have a rest!"
+            self.description = "Record all of your walks with your pet and watch your activity to ensure it gets the necessary physical activity"
+            
+            self.popupUndetailedTitle = "Time to have a rest!"
         case "washing":
             self.title = "washing"
+            self.popupButton = "Done"
+            self.description = ""
+            
+            self.popupUndetailedTitle = "Looks great!"
         case "water":
             self.title = "water"
+            self.popupButton = "Done"
+            self.description = "If your pet is unable to keep its coat and skin clean on its own, you can set a reminder for yourself"
+            
+            self.popupUndetailedTitle = "Mmm, clean water!"
         case "weight":
             self.title = "weight"
+            self.popupButton = "Done"
+            self.description = "It is very important to monitor the weight of the animal. Add weighting and track weight loss statistics"
+            
+            self.popupUndetailedTitle = "Weight"
         default:
             self.title = "claws"
+            self.popupButton = "Done"
+            self.description = "It is very important to monitor the weight of the animal. Add weighting and track weight loss statistics"
+            
+            self.popupUndetailedTitle = "Looks great!"
         }
         self.detailedView = false
         self.offset = 0
-        self.description = ""
-        self.popupUndetailedTitle = ""
+        
+       
         self.popupDetailedTitle = ""
         self.popupUndetailedDescription = ""
         self.popupDetailedDescription = ""
-        self.popupButton = ""
+        
     }
 }
 
@@ -80,6 +140,15 @@ extension String {
             return name.isEmpty ? nil : name
         }
     }
+    
+  /*  var mentionedKeys: [String] {
+        return split(self) {$0 == " "}
+      /*  let parts = split(separator: " ")
+        var result: [String] = []
+        for part in parts {
+            result.append(part)
+        }*/
+    }*/
 }
 
 /*
@@ -109,7 +178,7 @@ struct FoodActivity: Activity {
     var popupDetailedDescription: String = "Detailed description"
     var popupButton: String = "Bon Appetit!"
     
-    var description = "Monitor the quality and quantity of food. If your pet ate something strange, you can add a photo or video"
+    var description = ""
     
     var offset: CGFloat = 0
     var title: String = "food"

@@ -9,6 +9,10 @@ import SwiftUI
 
 let allActivites: [Activity] = [Activity(title: "weight"), Activity(title: "parasites"), Activity(title: "vaccine"), Activity(title: "pee"), Activity(title: "pills"), Activity(title: "walk"), Activity(title: "training"), Activity(title: "cage"), Activity(title: "vomit"), Activity(title: "washing"), Activity(title: "food"), Activity(title: "poo"), Activity(title: "claws"), Activity(title: "water")]
 
+let allActivitiesString = "weight parasites vaccine pee pills walk training cage vomit washing food poo claws water"
+
+let allActivitiesStringArray = ["weight", "parasites", "vaccine", "pee", "pills", "walk", "training", "cage", "vomit", "washing", "food", "poo", "claws", "water"]
+
 struct AddNewPet: View {
     @EnvironmentObject var petViewModel: PetViewModel
     @Binding var showPopup: Bool
@@ -44,6 +48,12 @@ struct AddNewPetConstructor: View {
     @State var active_activities: String = ""
     @State private var date = Date()
     
+    @State var image = UIImage(named: "cat")
+    
+    @State private var shouldPresentImagePicker = false
+    @State private var shouldPresentActionScheet = false
+    @State private var shouldPresentCamera = false
+    
     var body: some View {
         if firstPage {
         VStack {
@@ -62,13 +72,25 @@ struct AddNewPetConstructor: View {
                     .background(Color.white)
                     
                     VStack{
-                        Image("dog")
+                       /* Image("dog")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 100, height: 100)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.orangeColor, lineWidth: 4))
+                            .shadow(radius: 10)*/
+                        Image(uiImage: image!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 100, height: 100)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
                             .shadow(radius: 10)
+                            .onTapGesture { self.shouldPresentActionScheet = true }
+                            .sheet(isPresented: $shouldPresentImagePicker) {
+                               /* SUImagePickerView(sourceType: self.shouldPresentCamera ? .camera : .photoLibrary, image: self.$image, isPresented: self.$shouldPresentImagePicker) */
+                                SUImagePickerView(sourceType: self.shouldPresentCamera ? .camera : .photoLibrary, image: $image, isPresented: self.$shouldPresentImagePicker)
+                            }
                         
                         Text("Tap to change photo")
                             .font(.caption)
@@ -148,6 +170,15 @@ struct AddNewPetConstructor: View {
             .buttonStyle(GradientButtonStyle())
             .padding()
         }
+        .actionSheet(isPresented: $shouldPresentActionScheet) { () -> ActionSheet in
+            ActionSheet(title: Text("Choose mode"), message: Text("Please choose your preferred mode to set your profile image"), buttons: [ActionSheet.Button.default(Text("Camera"), action: {
+                self.shouldPresentImagePicker = true
+                self.shouldPresentCamera = true
+            }), ActionSheet.Button.default(Text("Photo Library"), action: {
+                self.shouldPresentImagePicker = true
+                self.shouldPresentCamera = false
+            }), ActionSheet.Button.cancel()])
+        }
         } else {
             VStack {
                 Spacer()
@@ -212,10 +243,17 @@ struct AddNewPetConstructor: View {
                     for selection in self.selections {
                         active_activities += allActivites[selection].title
                         active_activities += " "
-                        
+                    }
+                    
+                    var inactive_activities = ""
+                    for activity_index in allActivites.indices {
+                        if !self.selections.contains(activity_index) {
+                            inactive_activities += allActivites[activity_index].title
+                            inactive_activities += " "
+                        }
                     }
 
-                    let petInfo = PetInfo(name: name, chip_id: chip_id, dateOfBirth: birthday, gender: gender, neutred: neutred == 0 ? true : false, active_activities: active_activities)
+                    let petInfo = PetInfo(name: name, chip_id: chip_id, dateOfBirth: birthday, gender: gender, neutred: neutred == 0 ? true : false, active_activities: active_activities, inactive_activities: inactive_activities, image: image!)
 
                     petViewModel.addNewPetWith(petInfo: petInfo)
                     
@@ -223,6 +261,7 @@ struct AddNewPetConstructor: View {
                     
                     self.showPopup = false
                     self.firstPage = true
+                    self.selections.removeAll()
                    
                 }) {
                     Text("Done")
@@ -234,111 +273,11 @@ struct AddNewPetConstructor: View {
                 .buttonStyle(GradientButtonStyle())
                 .padding()
             }
+            
+        
+        
         }
     }
+    
 }
 
-/*
-struct SecondPageAddNewPet: View {
-    @EnvironmentObject var petViewModel: PetViewModel
-    @State private var date = Date()
-    @Binding var showPopup: Bool
-    
-    @State var selections: [Int] = []
-    @State var active_activities: String = ""
-    @Binding var firstPage: Bool
-    
-    @Binding var petInfo: PetInfo
-    
-    var body: some View {
-        VStack {
-            Spacer()
-            VStack {
-                ZStack {
-                    
-                    Button(action: {
-                        self.showPopup = false
-                        self.firstPage = true
-                    }) {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.black)
-                    }
-                    .offset(y: -20)
-                    .frame(width: 280, height: 40, alignment: .topTrailing)
-                    .background(Color.white)
-                    
-                    VStack {
-                        VStack {
-                            Text("Select activities ")
-                            Text("you want to track")
-                        }
-                            .font(.headline)
-                        VStack {
-                            Text("You can change selected activities")
-                            Text("and its settings in profile")
-                        }
-                        .font(.caption)
-                    }
-                    
-                }
-                
-               
-                
-                
-                List {
-                    ForEach(allActivites.indices, id: \.self) { index in
-                        MultipleSelectionRow(title: allActivites[index].title.capitalizingFirstLetter(), isSelected: self.selections.contains(index), image: allActivites[index].title) {
-                            if self.selections.contains(index) {
-                                self.selections.removeAll(where: { $0 == index })
-                            }
-                            else {
-                                self.selections.append(index)
-                            }
-                        }
-                    }
-                }
-                .frame(width: 300, height: 400)
-                
-            }
-            Button(action: {
-               
-                for selection in self.selections {
-                    active_activities += allActivites[selection].title
-                    active_activities += " "
-                    
-                    print("current active activities: \(active_activities)")
-                }
-                
-                print("after for active activities: \(active_activities)")
-                petInfo.active_activities = active_activities
-                print("active activities: \(petInfo.active_activities)")
-                
-                
-                petInfo.timestamp = date //TODO: add other activities
-                print("inactive activities: \(petInfo.inactive_activities)")
-                
-                petViewModel.addNewPetWith(petInfo: petInfo)
-                
-                
-               
-
-                petInfo = PetInfo()
-                
-                //petViewModel.deleteAllPets()
-                
-                self.showPopup = false
-                self.firstPage = true
-               
-            }) {
-                Text("Done")
-                    .font(.system(size: 16))
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                
-            }
-            .buttonStyle(GradientButtonStyle())
-            .padding()
-        }
-    }
-}
-*/

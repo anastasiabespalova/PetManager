@@ -33,6 +33,20 @@ extension Pet: Comparable {
 
    // private static var flightAwareRequest: PetRequest!
    // private static var flightAwareResultsCancellable: AnyCancellable?
+    
+    static func makeArchived(id: Int, context: NSManagedObjectContext) {
+        let pet = self.withId(id, context: context)
+        pet.archived_ = true
+        pet.objectWillChange.send()
+        try? context.save()
+    }
+    
+    static func makeUnarchived(id: Int, context: NSManagedObjectContext) {
+        let pet = self.withId(id, context: context)
+        pet.archived_ = false
+        pet.objectWillChange.send()
+        try? context.save()
+    }
 
     static func update(from info: PetInfo, context: NSManagedObjectContext) {
         let id = info.id
@@ -48,37 +62,28 @@ extension Pet: Comparable {
         pet.neutered_ = info.neutred
         pet.chip_id_ = info.chip_id
         pet.date_birth_ = info.date_birth
+        pet.photo_ = info.photo!.jpegData(compressionQuality: 1)!
+        pet.withActivityEntries.forEach { $0.objectWillChange.send() }
         pet.objectWillChange.send()
         try? context.save()
     }
 
     static func fetchRequest(_ predicate: NSPredicate) -> NSFetchRequest<Pet> {
         let request = NSFetchRequest<Pet>(entityName: "Pet")
-        request.sortDescriptors = [NSSortDescriptor(key: "timestamp_", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "id_", ascending: true)]
         request.predicate = predicate
         return request
     }
 
-  /*  var flightsTo: Set<Flight> {
-        get { (flightsTo_ as? Set<Flight>) ?? [] }
-        set { flightsTo_ = newValue as NSSet }
+    var withActivityEntries: Set<ActivityEntry_> {
+        get { (withActivityEntries_ as? Set<ActivityEntry_>) ?? [] }
+        set { withActivityEntries_ = newValue as NSSet }
     }
-    var flightsFrom: Set<Flight> {
-        get { (flightsFrom_ as? Set<Flight>) ?? [] }
-        set { flightsFrom_ = newValue as NSSet }
-    } */
 
     public var id: Int {
         get { Int(id_) } // TODO: maybe protect against when app ships?
         set { id_ = Int16(newValue) }
     }
-
- /*   var friendlyName: String {
-        let friendly = AirportInfo.friendlyName(name: self.name ?? "", location: self.location ?? "")
-        return friendly.isEmpty ? icao : friendly
-    }*/
-
-   // public var id: String { icao }
 
     static public func < (lhs: Pet, rhs: Pet) -> Bool {
         lhs.id < rhs.id
@@ -96,6 +101,7 @@ struct PetInfo: Hashable, Identifiable, Comparable {
     var archived: Bool
     var archived_activities: String
     var inactive_activities: String
+    var photo: UIImage?
     
     var gender: String
     var neutred: Bool
@@ -121,6 +127,7 @@ struct PetInfo: Hashable, Identifiable, Comparable {
         neutred = false
         chip_id = ""
         date_birth = Date()
+        photo = UIImage(named: "cat")!
     }
     
     init(pet: Pet) {
@@ -148,10 +155,17 @@ struct PetInfo: Hashable, Identifiable, Comparable {
         for activity in archived_activities.mentionedActivities {
             archived_activities_array.append(Activity(title: activity))
         }
+        
+        if let photoFromMemory = pet.photo_ {
+            photo = UIImage(data: photoFromMemory)!
+        } else {
+            photo = UIImage(named: "cat")!
+        }
+        
 
     }
 
-    init(name: String, chip_id: String, dateOfBirth: Date, gender: String, neutred: Bool, active_activities: String) {
+    init(name: String, chip_id: String, dateOfBirth: Date, gender: String, neutred: Bool, active_activities: String, inactive_activities: String, image: UIImage) {
         self.id =  UserDefaults.standard.integer(forKey: "MaxID") + 1
         UserDefaults.standard.set(id, forKey: "MaxID")
         
@@ -165,12 +179,18 @@ struct PetInfo: Hashable, Identifiable, Comparable {
         
         self.archived = false
         self.archived_activities = ""
-        self.inactive_activities = ""
-        
-        
+        //self.inactive_activities = allActivitiesString
+       // self.inactive_activities_array = allActivites
+        self.inactive_activities = inactive_activities
+        for activity in self.inactive_activities.mentionedActivities {
+            self.inactive_activities_array.append(Activity(title: activity))
+        }
+        self.photo = image
     }
 
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
     static func == (lhs: PetInfo, rhs: PetInfo) -> Bool { lhs.id == rhs.id }
     static func < (lhs: PetInfo, rhs: PetInfo) -> Bool { lhs.timestamp < rhs.timestamp }
 }
+
+

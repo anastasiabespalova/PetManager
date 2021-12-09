@@ -56,7 +56,7 @@ struct SmallConnectionView: View {
         } 
     }
 }
-
+/*
 struct LargeConnectionView: View {
     // MARK: - PROPERTIES
     let imageName: String
@@ -74,6 +74,32 @@ struct LargeConnectionView: View {
                 .frame(width: 130, height: 130)
                // .clipShape(Circle())
                 .shadow(radius: 10)
+              //  .overlay(Circle().stroke(Color.blue, lineWidth: 10))
+            
+            
+        }
+       
+    }
+}
+
+*/
+
+struct LargeConnectionView: View {
+    // MARK: - PROPERTIES
+    let image: UIImage
+    
+    // MARK: - BODY
+    var body: some View {
+        ZStack {
+            //Image(imageName)
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 200, height: 200)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 10)
+            
               //  .overlay(Circle().stroke(Color.blue, lineWidth: 10))
             
             
